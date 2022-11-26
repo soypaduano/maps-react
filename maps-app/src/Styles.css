@@ -9,9 +9,62 @@ body {
   display: flex;
   flex-direction: row;
 }
-.content-container .map-container {
+.content-container .map-title-container {
   width: 80%;
-  padding: 10px;
+}
+.content-container .map-title-container .m-scroll {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 65px;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 10px;
+}
+.content-container .map-title-container .m-scroll__title {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  white-space: nowrap;
+  transform: scale(2);
+  transition: all 1s ease;
+}
+.content-container .map-title-container .m-scroll__title > div {
+  display: flex;
+  animation: scrollText 30s infinite linear;
+}
+.content-container .map-title-container .m-scroll__title h2 {
+  margin: 0;
+  font-size: 0.8em;
+  transition: all 2s ease;
+}
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes slide-left {
+  from {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-300%);
+    transform: translateX(-300%);
+  }
+}
+.content-container .map-container {
+  padding: 5px 5px 0px 5px;
 }
 .content-container .map-container .map {
   margin: 0 auto;
@@ -20,17 +73,16 @@ body {
   position: relative !important;
   display: block !important;
   border: 1px solid black;
-  border-radius: 10px;
 }
 .content-container .map-container .marker-label {
   width: fit-content;
   height: 1rem;
-  border-radius: 2px;
   color: black;
   background-color: rgba(235, 235, 235, 0.89);
   bottom: 40px;
   padding: 10px;
   position: relative;
+  font-family: 'Albert Sans', sans-serif Im !important;
 }
 .content-container .map-container .marker-label.adminPick {
   border: 2px solid yellow;
@@ -42,22 +94,47 @@ body {
 .content-container .profile-container {
   width: 20%;
   text-align: left;
-  background-color: #787EA5;
-  border-radius: 10px;
-  margin: 20px;
-}
-.content-container .profile-container .soundcloud-url a {
-  color: orange;
-  text-decoration: underline;
-}
-.content-container .profile-container h1 {
-  text-align: center;
+  background-color: #d7d9e6;
+  color: black;
+  font-size: 1rem;
 }
 .content-container .profile-container .artist-profile-container {
   margin: 5px;
   font-size: 20px;
 }
-.content-container .profile-container iframe {
+.content-container .profile-container .artist-profile-container .header-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content-container .profile-container .artist-profile-container p {
+  margin: 5px;
+}
+.content-container .profile-container .artist-profile-container .adminPick {
+  font-size: 0.6em;
+}
+.content-container .profile-container .artist-profile-container .type,
+.content-container .profile-container .artist-profile-container .area {
+  text-align: center;
+  font-size: 0.7em;
+}
+.content-container .profile-container .artist-profile-container .soundcloud-url a {
+  color: orange;
+  text-decoration: underline;
+}
+.content-container .profile-container .artist-profile-container .description {
+  font-size: 0.7em;
+  padding: 5px;
+}
+.content-container .profile-container .artist-profile-container h2 {
+  text-align: center;
+  margin: 5px;
+}
+.content-container .profile-container .artist-profile-container iframe {
   width: 100%;
   height: 200px;
+}
+.content-container .profile-container .artist-profile-container .adminName {
+  font-size: 0.7em;
+  margin-bottom: 0;
 }
