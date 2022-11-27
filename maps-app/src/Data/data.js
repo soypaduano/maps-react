@@ -151,8 +151,8 @@ export default { "objs": [
     {
         id:"11",
         coord: {
-            lat: 40.40740343202776,
-            lon: -3.614150588878342
+            lat: 40.38089536612783,
+            lon: -3.6236649111928787
         },
         name: "Depresión Sonora",
         area: "Vallecas",
@@ -192,11 +192,74 @@ export default { "objs": [
         url: "https://soundcloud.com/lvaro-de-le-n",
         type: "DJ",
         adminName: "Padu"
-    }
-
-
+    },
+    {
+        id:"14",
+        coord: {
+            lat: 40.38626896057024,
+            lon: -3.7603888062683133
+        },
+        name: "Natos y Waor",
+        area: "Aluche",
+        description: `Natos y Waor somos un dúo de rap madrileño afincado en Aluche (Madrid).
+        Contamos con 8 trabajos a nuestras espaldas: “POR LA JETA” (2011), “CATARSIS” (2012), HIJOS DE LA RUINA” (2012, ft Recycled J), “CAJA NEGRA” (2014), “MARTES 13” (ganador del Premio de la Música Independiente a mejor disco de Hip Hop de 2015), “HIJOS DE LA RUINA Vol.2” (2016, ft Recycled J),  “CICATRICES” (2018) , “HIJOS DE LA RUINA Vol.3” (2021, ft Recycled J, que es el disco de hip hop más reproducido el día de su lanzamiento en España en la historia de las plataformas digitales) y “LUNA LLENA” (2022).
+        Entre nuestros canales de Spotify y Youtube sumamos más de mil quinientos millones de streams. Digna de mención es nuestra serie de videoclips llamada “BARRAS BRAVAS”, que cuenta a día de hoy con 22 volúmenes.
+        En los directos nos acompaña Dj Saik.`,
+        date: 2011,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=I8tilIB8Uhc",
+        type: "Raperos",
+        adminName: "Padu"
+    },
+    {
+        id:"15",
+        coord: {
+            lat: 40.406875277019104,
+            lon: -3.7534108809315647
+        },
+        name: "Bushe (Papito Basuko)",
+        area: "Batán",
+        description: `Bushe es un rapero del barrio de Batán, Madrid. Hizo un álbum con Charlie (Hijos Bastardos) llamado Cannibal Destroy. 
+        Al tiempo, se convirtió en Papito Basuko. A destacar: 'Las cosas claras y el rap oscuro'`,
+        date: 2009,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=KOxK5niz7XU",
+        type: "Raperos",
+        adminName: "Padu"
+    },
+    {
+        id:"16",
+        coord: {
+            lat: 40.34636292005918,
+            lon:  -3.7097606790994875
+        },
+        name: "Odd Liquor",
+        area: "Villaverde",
+        description: `Marcos Terrones, aka Oddliquor, es un cantante y productor madrileño de 23 años (también actor), en cuyo proyecto musical se atreve a fusionar r&b con pinceladas de dancehall, afro, electrónica, latino, trap y trip-hop. Como productor, es uno de los más reputados de la actual escena urbano (ha trabajo en varios temas de Nathy Peluso, entre otros muchos artistas) y, como autor, acaba ahora de publicar su segundo álbum, ‘Vibrato’, que llega tras su debut de 2016, ‘Serendipia’.`,
+        date: 2016,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=yMG8XKw2cV4",
+        type: "Rapero",
+        adminName: "Padu"
+    },
+    {
+        id:"17",
+        coord: {
+            lat: 40.36972983335961,
+            lon:  -3.709731101989746
+        },
+        name: "Israel B",
+        area: "Orcasitas",
+        description: `Tras formar parte de tres de los grupos más emblemáticos de la música urbana nacional (Corredores del Bloque junto a Kaydy Cain y M. Ramirez), Takers y Los Alemanes), Israel B comienza su proyecto solista en 2018 con la publicación de ‘Hielo’, su primer EP. Desde entonces su carrera no ha parado de crecer hasta convertirse en uno de los artistas de referencia en el género.`,
+        date: 2018,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=p9UPM2NLKxo",
+        type: "Rapero",
+        adminName: "Padu"
+    },
 
 ]}
+
 
 
 

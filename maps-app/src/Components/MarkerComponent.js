@@ -29,6 +29,7 @@ function MarkerComponent(props) {
      label={{
         text: `${name}`,
         fontFamily: 'Albert Sans, sans-serif',
+        fontSize: '0.7rem',
         className: `marker-label ${(isSelected ? 'selected' : '')}` 
     }}>
     </Marker>

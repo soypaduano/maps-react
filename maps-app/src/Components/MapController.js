@@ -1,6 +1,5 @@
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap} from "@react-google-maps/api";
 import MarkerComponent from "./MarkerComponent";
-import { nanoid } from 'nanoid'
 import React from 'react';
 
 function MapController(props){
