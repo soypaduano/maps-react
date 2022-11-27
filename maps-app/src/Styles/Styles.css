@@ -9,10 +9,10 @@ body {
   display: flex;
   flex-direction: row;
 }
-.content-container .map-title-container {
+.content-container .map-container {
   width: 80%;
 }
-.content-container .map-title-container .m-scroll {
+.content-container .map-container .m-scroll {
   display: flex;
   position: relative;
   width: 100%;
@@ -22,7 +22,7 @@ body {
   z-index: 1;
   margin-top: 10px;
 }
-.content-container .map-title-container .m-scroll__title {
+.content-container .map-container .m-scroll__title {
   display: flex;
   position: absolute;
   top: 0;
@@ -36,11 +36,11 @@ body {
   transform: scale(2);
   transition: all 1s ease;
 }
-.content-container .map-title-container .m-scroll__title > div {
+.content-container .map-container .m-scroll__title > div {
   display: flex;
   animation: scrollText 30s infinite linear;
 }
-.content-container .map-title-container .m-scroll__title h2 {
+.content-container .map-container .m-scroll__title h2 {
   margin: 0;
   font-size: 0.8em;
   transition: all 2s ease;
@@ -63,10 +63,10 @@ body {
     transform: translateX(-300%);
   }
 }
-.content-container .map-container {
-  padding: 5px 5px 0px 5px;
+.content-container .map-element-container {
+  padding-left: 5px;
 }
-.content-container .map-container .map {
+.content-container .map-element-container .map {
   margin: 0 auto;
   height: 600px;
   padding: 10px;
@@ -74,7 +74,7 @@ body {
   display: block !important;
   border: 1px solid black;
 }
-.content-container .map-container .marker-label {
+.content-container .map-element-container .marker-label {
   width: fit-content;
   height: 0.5rem;
   color: black;
@@ -85,10 +85,10 @@ body {
   font-family: 'Albert Sans', sans-serif Im !important;
   font-size: 0.1rem;
 }
-.content-container .map-container .marker-label.adminPick {
+.content-container .map-element-container .marker-label.adminPick {
   border: 2px solid yellow;
 }
-.content-container .map-container .marker-label.selected {
+.content-container .map-element-container .marker-label.selected {
   border: 2px solid red;
   font-weight: bold;
 }
@@ -138,4 +138,11 @@ body {
 .content-container .profile-container .artist-profile-container .adminName {
   font-size: 0.7em;
   margin-bottom: 0;
+}
+.filters-container {
+  margin: 10px;
+  font-size: 1.2rem;
+}
+.filters-container label {
+  margin: 10px;
 }

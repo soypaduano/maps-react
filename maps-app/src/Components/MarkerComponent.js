@@ -6,35 +6,52 @@ import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps
 
 function MarkerComponent(props) {
 
-    let {id, name, coord} = props.element;
+    let {id, name, coord, type} = props.element;
     let isSelected = props.selectedMarker.id ? props.selectedMarker.isSelected : false;
+    let shouldIShow = true;
 
     let markerClicked = (id) =>{
         props.handleClickSetMarker(id)
     }
 
-    if(id != props.selectedMarker.id){
-        isSelected = false;
+    if(id != props.selectedMarker.id) isSelected = false;
+
+
+
+    console.log(props.filters)
+
+    if(Object.keys(props.filters).length !== 0){
+        //AdminPicks, type, year?
+        for (let [key, value] of Object.entries(props.filters)) {
+            if(key === "genre" && value !== type){
+                shouldIShow = false;
+            }
+          }
     }
 
-    console.log("Yo, componente con ID " + id + " me actualizo y tengo un valor selected de " + isSelected)
 
-    return (
-    <Marker key={id} onClick={() => {
-          markerClicked(id)
-    }} onHover={() => {
-        markerClicked(id)
-    }} position=
-    {{ lat: coord.lat, lng: coord.lon }}
-     label={{
-        text: `${name}`,
-        fontFamily: 'Albert Sans, sans-serif',
-        fontSize: '0.7rem',
-        className: `marker-label ${(isSelected ? 'selected' : '')}` 
-    }}>
-    </Marker>
-    )
-    
+    if(shouldIShow){
+        return (
+            <Marker key={id} onClick={() => {
+                markerClicked(id)
+            }} onHover={() => {
+                markerClicked(id)
+            }} position=
+            {{ lat: coord.lat, lng: coord.lon }}
+            label={{
+                text: `${name}`,
+                fontFamily: 'Albert Sans, sans-serif',
+                fontSize: '0.7rem',
+                className: `marker-label ${(isSelected ? 'selected' : '')}` 
+            }}>
+        </Marker>
+        )
+    } else {
+        return (
+            <>
+            </>
+        )
+    }
 }
 
 export default React.memo(MarkerComponent, areEqual);

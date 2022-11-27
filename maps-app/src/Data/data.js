@@ -7,7 +7,7 @@ export default { "objs": [
         },
         name: "Supreme P",
         area: "Ciudad Lineal / Arturo Soria",
-        description: "Rapero de Ciudad Lineal to potente",
+        description: "Rap de Ciudad Lineal to potente",
         date: 2016,
         url: "https://www.youtube.com/watch?v=rU_Eb6PrBy0",
         type: "Rapero",
@@ -40,7 +40,7 @@ export default { "objs": [
         description: "Grupo de Ciudad Lineal to potente",
         date: 2020,
         url: "https://www.youtube.com/watch?v=2_NRwvX3EDA",
-        type: "Grupo",
+        type: "Grupos",
         adminName: "Padu"
     },
     {
@@ -82,7 +82,7 @@ export default { "objs": [
         },
         name: "Andreu Slim",
         area: "Avenida de la Paz",
-        description: "Rapero de Av de la paz to potente",
+        description: "Rap de Av de la paz to potente",
         date: 2019,
         url: "https://www.youtube.com/watch?v=RJxAEV8ESrk",
         type: "Rapero",
@@ -96,7 +96,7 @@ export default { "objs": [
         },
         name: "28 Minimal",
         area: "Centro",
-        description: "Rapero de Madrid Centro que literal tiene una mota que te peta el cerebro",
+        description: "Rap de Madrid Centro que literal tiene una mota que te peta el cerebro",
         date: 2012,
         adminPick: true,
         url: "https://www.youtube.com/watch?v=TSioJMYUXkY",
@@ -208,7 +208,7 @@ export default { "objs": [
         date: 2011,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=I8tilIB8Uhc",
-        type: "Raperos",
+        type: "Rapero",
         adminName: "Padu"
     },
     {
@@ -224,7 +224,7 @@ export default { "objs": [
         date: 2009,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=KOxK5niz7XU",
-        type: "Raperos",
+        type: "Rapero",
         adminName: "Padu"
     },
     {
@@ -257,9 +257,37 @@ export default { "objs": [
         type: "Rapero",
         adminName: "Padu"
     },
-
+    {
+        id:"18",
+        coord: {
+            lat: 40.57642025780046,
+            lon:  -3.931985070198205,
+        },
+        name: "Baby Pantera",
+        area: "Torrelodones",
+        description: `Con solo 23 años, Baby Pantera se ha posicionado entre los mejores productores actuales de la escena urbana española. Sus ritmos han llegado a los oídos de la calle junto a cantantes como Gloosito, Yung Beef o Kaydy Cain. Sus DJ sets mezclan varios estilos, desde rap de Detroit hasta Miami Bass, Jersey Club, Dembow o Afro. Actualmente está trabajando en su primer álbum en solitario y le espera una extensa gira  acompañando a su artista Gloosito. Este niño está a fuego.`,
+        date: 2018,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=HsZF8cFJXsY",
+        type: "Productor",
+        adminName: "Padu"
+    },
+    {
+        id:"19",
+        coord: {
+            lat: 40.4330871164685,
+            lon:  -3.688284652884344,
+        },
+        name: "Dano",
+        area: "Centro",
+        description: `Dano es un artista polifacético e inspirado a diversos niveles. El MC, productor, director, etc, es una de las fuerzas que mantienen la maquinaria de Ziontifik siempre corriendo. Aparte de sus trabajos en colaboración y en grupo, Dano también ha lanzado diversos discos en solitario donde cabe destacar su debud discográfico con "Cierra los ojos" en 2007. `,
+        date: 2018,
+        adminPick: false,
+        url: "https://www.youtube.com/watch?v=Ky-f0ZuwbDw",
+        type: "Rapero",
+        adminName: "Padu"
+    }
 ]}
-
 
 
 

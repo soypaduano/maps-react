@@ -22,7 +22,7 @@ function MapController(props){
 
     let createMarkersForMap = () => {
       let arr = props.objs.objs.map(element => {
-        return <MarkerComponent key={element.id} element={element} handleClickSetMarker={props.handleClickSetMarker} selectedMarker={props.selectedMarker}  />
+        return <MarkerComponent key={element.id} element={element} handleClickSetMarker={props.handleClickSetMarker} selectedMarker={props.selectedMarker} filters={props.filters}  />
       });
       
       return arr;
