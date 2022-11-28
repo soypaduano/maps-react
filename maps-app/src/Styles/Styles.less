@@ -17,7 +17,7 @@ body {
   flex-direction: row;
 
 
-  .map-container{
+  .map-container {
     width: 80%;
 
     .m-scroll {
@@ -57,33 +57,34 @@ body {
       }
 
 
-    @keyframes scrollText {
-      from {
-        transform: translateX(0%);
+      @keyframes scrollText {
+        from {
+          transform: translateX(0%);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
       }
 
-      to {
-        transform: translateX(-50%);
-      }
-    }
+      @keyframes slide-left {
+        from {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
 
-    @keyframes slide-left {
-      from {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
+        to {
+          -webkit-transform: translateX(-300%);
+          transform: translateX(-300%);
+        }
       }
 
-      to {
-        -webkit-transform: translateX(-300%);
-        transform: translateX(-300%);
-      }
-    }
-    
     }
   }
 
   .map-element-container {
     padding-left: 5px;
+
     .map {
       margin: 0 auto;
       height: 600px;
@@ -111,6 +112,7 @@ body {
       &.selected {
         border: 2px solid red;
         font-weight: bold;
+        background-color: rgba(235, 235, 235, 1);
       }
     }
   }
@@ -125,23 +127,25 @@ body {
     .artist-profile-container {
       margin: 5px;
       font-size: 20px;
+      position: relative;
+      height: 100%;
 
-
-      .header{
+      .header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
       }
 
-      p{
+      p {
         margin: 5px;
       }
 
-      .adminPick{
+      .adminPick {
         font-size: 0.6em;
       }
 
-      .type, .area{
+      .type,
+      .area {
         text-align: center;
         font-size: 0.7em;
       }
@@ -151,7 +155,7 @@ body {
         text-decoration: underline;
       }
 
-      .description{
+      .description {
         font-size: 0.7em;
         padding: 5px;
       }
@@ -166,18 +170,27 @@ body {
         height: 200px;
       }
 
-      .adminName{
+      .adminName {
         font-size: 0.7em;
         margin-bottom: 0;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 10px;
       }
     }
   }
 }
 
-.filters-container{
+.filters-container {
   margin: 10px;
   font-size: 1.2rem;
-  label{
+
+  label {
     margin: 10px;
+
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
   }
 }

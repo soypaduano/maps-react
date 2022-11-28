@@ -4,14 +4,19 @@ import { useLoadScript} from "@react-google-maps/api";
 import Profile from './Components/Profile.js';
 import MapController from './Components/MapController.js'
 import objData from './Data/data.js'
-import {Filters} from './Components/Filters.js'
+import Filters from './Components/Filters.js'
 
 function App() {
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyA-YCkd4A-zjCH1mDUueq3vjgs1z_GGNks" });
 
   let [selectedMarker, setSelectedMarker] = React.useState({});
-  let [filtersApplied, setFiltersApplied] = React.useState({});
+  let [filtersApplied, setFiltersApplied] = React.useState({
+    'Raperos': true,
+    'Grupos': true,
+    'DJ': true,
+    'Colectivos': true
+  });
 
 
   let handleClickSetMarker = (id) => {
@@ -23,9 +28,11 @@ function App() {
     })
   }
 
-  let handleClickSetFiltersApplied = (filters) => {
+  let handleClickSetFiltersApplied = (key, value) => {
     setFiltersApplied(oldFiltersApplied => {
-      return{...oldFiltersApplied, filters};
+      console.log(key)
+      console.log(value);
+      return {...oldFiltersApplied, [key]: value };
     })
   }
 
@@ -66,7 +73,7 @@ function App() {
               </div>
 
               <div className="map-element-container">
-                <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={{}} />
+                <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={filtersApplied} />
               </div>
             </div>
             <div className="profile-container">

@@ -70,7 +70,7 @@ export default { "objs": [
         date: 2015,
         adminPick: true,
         url: "https://www.mixcloud.com/relativa/stream/",
-        type: "Colectivo",
+        type: "Colectivos",
         adminName: "Padu"
     },
     {
@@ -160,7 +160,7 @@ export default { "objs": [
         date: 2020,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=JXXavQ2tR3s",
-        type: "Grupo",
+        type: "Grupos",
         adminName: "Padu"
     },
     {

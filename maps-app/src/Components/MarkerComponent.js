@@ -10,32 +10,23 @@ function MarkerComponent(props) {
     let isSelected = props.selectedMarker.id ? props.selectedMarker.isSelected : false;
     let shouldIShow = true;
 
-    let markerClicked = (id) =>{
-        props.handleClickSetMarker(id)
-    }
+    let markerClicked = (id) => props.handleClickSetMarker(id)
 
     if(id != props.selectedMarker.id) isSelected = false;
 
-
-
-    console.log(props.filters)
-
     if(Object.keys(props.filters).length !== 0){
-        //AdminPicks, type, year?
         for (let [key, value] of Object.entries(props.filters)) {
-            if(key === "genre" && value !== type){
-                shouldIShow = false;
-            }
+            if(type === key) shouldIShow = value ? true : false;
           }
     }
 
-
+    
     if(shouldIShow){
         return (
             <Marker key={id} onClick={() => {
                 markerClicked(id)
             }} onHover={() => {
-                markerClicked(id)
+                alert("hola?")
             }} position=
             {{ lat: coord.lat, lng: coord.lon }}
             label={{
@@ -58,6 +49,17 @@ export default React.memo(MarkerComponent, areEqual);
 
 
 function areEqual(oldProps, nextProps){
+
+    /*
+        Debemos comprobar también que hay filters aplicandose... En caso de que haya filters aplicandose, renderizamos todo de nuevo.
+
+    */
+
+    if(oldProps.filters != nextProps.filters){
+        console.log("Filters are not the same, so we're re-rendering");
+        return false;
+    }
+
     return !(oldProps.element.id === nextProps.selectedMarker.id || oldProps.element.id === oldProps.selectedMarker.id )
     /*
         Yo, como componente marker, me debería actualizar solo si: 

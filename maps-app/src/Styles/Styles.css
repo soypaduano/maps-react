@@ -91,6 +91,7 @@ body {
 .content-container .map-element-container .marker-label.selected {
   border: 2px solid red;
   font-weight: bold;
+  background-color: #ebebeb;
 }
 .content-container .profile-container {
   width: 20%;
@@ -102,6 +103,8 @@ body {
 .content-container .profile-container .artist-profile-container {
   margin: 5px;
   font-size: 20px;
+  position: relative;
+  height: 100%;
 }
 .content-container .profile-container .artist-profile-container .header {
   display: flex;
@@ -138,6 +141,9 @@ body {
 .content-container .profile-container .artist-profile-container .adminName {
   font-size: 0.7em;
   margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
 }
 .filters-container {
   margin: 10px;
@@ -145,4 +151,8 @@ body {
 }
 .filters-container label {
   margin: 10px;
+}
+.filters-container label:hover {
+  cursor: pointer;
+  font-weight: bold;
 }

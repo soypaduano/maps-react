@@ -21,22 +21,13 @@ function Profile(props) {
                     <p className="type">{type} </p>
                     <p className="area">{area} <i className="fa-solid fa-location-pin"></i> </p>
                 </div>
-
                 <div className="title">
                     <h2>{name}</h2>
                     <span>{date}</span>
                 </div>
-
-                <div >
-                    {checkMusicSource(url)}
-                </div>
-                <p className="description">
-                    {description}
-                </p>
-
-                <p className="adminName">
-                    Añadido por: {adminName}
-                </p>
+                <div>{checkMusicSource(url)}</div>
+                <p className="description">{description}</p>
+                <p className="adminName"> {adminName}</p>
             </div>
         )
     } else {
@@ -44,7 +35,6 @@ function Profile(props) {
             <div className="artist-profile-container">
                 <h1>Pincha un artista del mapa para ver toda su información</h1>
             </div>
-
         )
     }
 }
