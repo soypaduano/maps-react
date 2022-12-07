@@ -1,8 +1,15 @@
 @background-color: #2C365E;
 @background-color-profile: #d7d9e6;
+@background-color-profile-hover: #bbbed1;
 @admin-pick-color: #FBE689;
 @color-font: #ffffff;
 @font-1: 'Albert Sans', sans-serif;
+
+html, #root, body, .App, main, .content-container{
+  height: 100%;
+}
+
+
 
 html,
 body {
@@ -87,7 +94,7 @@ body {
 
     .map {
       margin: 0 auto;
-      height: 600px;
+      height: 30rem;
       padding: 10px;
       position: relative !important;
       display: block !important;
@@ -123,17 +130,61 @@ body {
     background-color: @background-color-profile;
     color: black;
     font-size: 1rem;
+    height: 100%;
+
+    .list-profile-container{
+      font-size: 20px;
+      position: relative;
+      height: 100%;
+      overflow-y: auto;
+
+      h3{
+        margin: 10px;
+      }
+
+      ul {
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          padding: 2px;
+          border-left: 0px;
+          border-right: 0px;
+          border-top: 1px;
+          border-bottom: 0px;
+          border-color: black;
+          border-style: solid;
+          p{
+            margin: 0px 0px 0px 5px ;
+          }
+          span {
+            font-size: 0.8rem;
+            margin-left: 5px;
+          }
+          &:hover{
+            cursor: pointer;
+            background-color: @background-color-profile-hover;
+          }
+          transition: all 0.30s ease;
+        }
+      }
+    }
 
     .artist-profile-container {
       margin: 5px;
       font-size: 20px;
       position: relative;
-      height: 100%;
+      height: 90%;
 
       .header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      }
+
+      .back{
+        cursor: pointer;
       }
 
       p {

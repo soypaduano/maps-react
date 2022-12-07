@@ -20,8 +20,7 @@ function Filters(props) {
 
     return (
         <div className="filters-container">
-             {console.log("rendering filter container")}
-             <Checkbox label="Raperos" value={props.filtersApplied["Raperos"]} />
+             <Checkbox label="Rap" value={props.filtersApplied["Rap"]} />
              <Checkbox label="Grupos" value={props.filtersApplied["Grupos"]}/>
              <Checkbox label="DJ" value={props.filtersApplied["DJ"]}/>
              <Checkbox label="Colectivos" value={props.filtersApplied["Colectivos"]}/>

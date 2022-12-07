@@ -13,7 +13,7 @@ function App() {
 
   let [selectedMarker, setSelectedMarker] = React.useState({});
   let [filtersApplied, setFiltersApplied] = React.useState({
-    'Raperos': true,
+    'Rap': true,
     'Grupos': true,
     'DJ': true,
     'Colectivos': true
@@ -21,6 +21,9 @@ function App() {
 
 
   let handleClickSetMarker = (id) => {
+
+    if(id == null) setSelectedMarker({});
+
     let copyElement = objData.objs.find(x => x.id === id)
     let element = { ...copyElement };
     setSelectedMarker(oldMarker => {
@@ -71,15 +74,14 @@ function App() {
                 </div>
                 <div className="map-element-container">
                   <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={filtersApplied} />
+                  <Filters handleClickSetFiltersApplied={handleClickSetFiltersApplied} filtersApplied={filtersApplied} />
                 </div>
               </div>
               <div className="profile-container">
-                {<Profile markerSelected={selectedMarker} />}
+                {<Profile markerSelected={selectedMarker} objs={objData} handleClickSetMarker={handleClickSetMarker} />}
               </div>
             </div>
           </AdminContext.Provider>
-          
-          <Filters handleClickSetFiltersApplied={handleClickSetFiltersApplied} filtersApplied={filtersApplied} />
         </main>
       </div>
     );

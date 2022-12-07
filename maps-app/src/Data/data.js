@@ -10,7 +10,7 @@ export default { "objs": [
         description: "Rap de Ciudad Lineal to potente",
         date: 2016,
         url: "https://www.youtube.com/watch?v=rU_Eb6PrBy0",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -26,7 +26,7 @@ export default { "objs": [
         Música callejera, pero apasionada por los placeres de la vida… ganas de tener dinero y de disfrutar al máximo… coches, chicas, ropa y champang caro.`,
         date: 2002,
         url: "https://www.youtube.com/watch?v=JpnIQpsbyf4",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -85,7 +85,7 @@ export default { "objs": [
         description: "Rap de Av de la paz to potente",
         date: 2019,
         url: "https://www.youtube.com/watch?v=RJxAEV8ESrk",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -100,7 +100,7 @@ export default { "objs": [
         date: 2012,
         adminPick: true,
         url: "https://www.youtube.com/watch?v=TSioJMYUXkY",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -115,7 +115,7 @@ export default { "objs": [
         date: 2012,
         adminPick: true,
         url: "https://www.youtube.com/watch?v=f0QdGl6j2eg",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -130,7 +130,7 @@ export default { "objs": [
         date: 2014,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=HT31b9cyVTo",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -145,7 +145,7 @@ export default { "objs": [
         date: 2018,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=O4dejTPUPMs",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -175,7 +175,7 @@ export default { "objs": [
         date: 2002,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=WBUVlCyklTE",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -208,7 +208,7 @@ export default { "objs": [
         date: 2011,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=I8tilIB8Uhc",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -224,7 +224,7 @@ export default { "objs": [
         date: 2009,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=KOxK5niz7XU",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -239,7 +239,7 @@ export default { "objs": [
         date: 2016,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=yMG8XKw2cV4",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -254,7 +254,7 @@ export default { "objs": [
         date: 2018,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=p9UPM2NLKxo",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     },
     {
@@ -284,7 +284,7 @@ export default { "objs": [
         date: 2018,
         adminPick: false,
         url: "https://www.youtube.com/watch?v=Ky-f0ZuwbDw",
-        type: "Rapero",
+        type: "Rap",
         adminName: "Padu"
     }
 ]}

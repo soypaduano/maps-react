@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import AdminContext from "./AdminContext";
+import ListElementContainer from "./ListElementContainer";
 
 function Profile(props) {
 
@@ -16,11 +17,12 @@ function Profile(props) {
     }
 
     if (props.markerSelected.name) {
-        let { date, url, name, type, description, adminPick, adminName, area, isSelected } = props.markerSelected;
+        let { date, url, name, type, description, adminPick, adminName, area} = props.markerSelected;
         return (
             <AdminContext.Consumer>
                 {theme => (
                     <div className="artist-profile-container">
+                    <a onClick={() => {props.handleClickSetMarker(null)}} className="back"> <i class="fa-solid fa-list"></i> Ver lista</a>
                     {adminPick && <p className="adminPick"> Admin Pick <i className="fas fa-star"></i> </p>}
                     <div className="header-profile">
                         <p className="type">{type} </p>
@@ -33,7 +35,6 @@ function Profile(props) {
                     <div>{checkMusicSource(url)}</div>
                     <p className="description">{description}</p>
                     <p className="adminName"> Añadido por {adminName}</p>
-                    <p> El admin actual es {theme} </p>
                 </div>
             )}
                     
@@ -41,8 +42,9 @@ function Profile(props) {
         )
     } else {
         return (  
-            <div className="artist-profile-container">
-                <h1>Pincha un artista del mapa para ver toda su información</h1>
+            <div className="list-profile-container">
+                <h3>Pincha un artista del mapa para ver toda su información</h3>
+                <ListElementContainer objs={props.objs} handleClickSetMarker={props.handleClickSetMarker} />
             </div>
         )
     }

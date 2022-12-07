@@ -1,4 +1,12 @@
 html,
+#root,
+body,
+.App,
+main,
+.content-container {
+  height: 100%;
+}
+html,
 body {
   background-color: #2C365E;
   color: #ffffff;
@@ -68,7 +76,7 @@ body {
 }
 .content-container .map-element-container .map {
   margin: 0 auto;
-  height: 600px;
+  height: 30rem;
   padding: 10px;
   position: relative !important;
   display: block !important;
@@ -99,17 +107,57 @@ body {
   background-color: #d7d9e6;
   color: black;
   font-size: 1rem;
+  height: 100%;
+}
+.content-container .profile-container .list-profile-container {
+  font-size: 20px;
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+.content-container .profile-container .list-profile-container h3 {
+  margin: 10px;
+}
+.content-container .profile-container .list-profile-container ul {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.content-container .profile-container .list-profile-container ul li {
+  padding: 2px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 1px;
+  border-bottom: 0px;
+  border-color: black;
+  border-style: solid;
+  transition: all 0.3s ease;
+}
+.content-container .profile-container .list-profile-container ul li p {
+  margin: 0px 0px 0px 5px ;
+}
+.content-container .profile-container .list-profile-container ul li span {
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+.content-container .profile-container .list-profile-container ul li:hover {
+  cursor: pointer;
+  background-color: #bbbed1;
 }
 .content-container .profile-container .artist-profile-container {
   margin: 5px;
   font-size: 20px;
   position: relative;
-  height: 100%;
+  height: 90%;
 }
 .content-container .profile-container .artist-profile-container .header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.content-container .profile-container .artist-profile-container .back {
+  cursor: pointer;
 }
 .content-container .profile-container .artist-profile-container p {
   margin: 5px;
