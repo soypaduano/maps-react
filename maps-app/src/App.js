@@ -1,5 +1,6 @@
 import './Styles/Styles.css';
 import React from 'react';
+import AdminContext from './Components/AdminContext';
 import { useLoadScript} from "@react-google-maps/api";
 import Profile from './Components/Profile.js';
 import MapController from './Components/MapController.js'
@@ -30,19 +31,15 @@ function App() {
 
   let handleClickSetFiltersApplied = (key, value) => {
     setFiltersApplied(oldFiltersApplied => {
-      console.log(key)
-      console.log(value);
       return {...oldFiltersApplied, [key]: value };
     })
   }
-
 
   React.useEffect(() => {
     objData.objs = objData.objs.map(element => {
       element.isSelected = false;
       return element;
     })
-
   }, [])
 
   if (!isLoaded) {
@@ -55,31 +52,33 @@ function App() {
     return (
       <div className="App">
         <main>
-          <div className="content-container">
-            <div className="map-container">
-              <div>
-                <div className="m-scroll">
-                  <div className="m-scroll__title">
-                    <div>
-                      <h2>
-                        <p> &nbsp; M30 Club es un proyecto creado por un grupo de personas apasionadas por la música y por Madrid. M30 Club documenta todos los artistas de distintos géneros geolocalizados.</p>&nbsp;
-                      </h2>
-                      <h2>
-                        <p> &nbsp; M30 Club es un proyecto creado por un grupo de personas apasionadas por la música y por Madrid. M30 Club documenta todos los artistas de distintos géneros geolocalizados. </p>&nbsp;
-                      </h2>
+          <AdminContext.Provider value={"Barbosa"}>
+            <div className="content-container">
+              <div className="map-container">
+                <div>
+                  <div className="m-scroll">
+                    <div className="m-scroll__title">
+                      <div>
+                        <h2>
+                          <p> &nbsp; M30 Club es un proyecto creado por un grupo de personas apasionadas por la música y por Madrid. M30 Club documenta todos los artistas de distintos géneros geolocalizados.</p>&nbsp;
+                        </h2>
+                        <h2>
+                          <p> &nbsp; M30 Club es un proyecto creado por un grupo de personas apasionadas por la música y por Madrid. M30 Club documenta todos los artistas de distintos géneros geolocalizados. </p>&nbsp;
+                        </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className="map-element-container">
+                  <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={filtersApplied} />
+                </div>
               </div>
-
-              <div className="map-element-container">
-                <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={filtersApplied} />
+              <div className="profile-container">
+                {<Profile markerSelected={selectedMarker} />}
               </div>
             </div>
-            <div className="profile-container">
-              {<Profile markerSelected={selectedMarker} />}
-            </div>
-          </div>
+          </AdminContext.Provider>
+          
           <Filters handleClickSetFiltersApplied={handleClickSetFiltersApplied} filtersApplied={filtersApplied} />
         </main>
       </div>

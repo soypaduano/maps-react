@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from 'react'
+import AdminContext from "./AdminContext";
 
 function Profile(props) {
+
+    const adminContext = useContext(AdminContext )
 
     let checkMusicSource = (url) => {
         if (url.includes("youtube")) {
@@ -15,23 +18,29 @@ function Profile(props) {
     if (props.markerSelected.name) {
         let { date, url, name, type, description, adminPick, adminName, area, isSelected } = props.markerSelected;
         return (
-            <div className="artist-profile-container">
-                {adminPick && <p className="adminPick"> Admin Pick <i className="fas fa-star"></i> </p>}
-                <div className="header-profile">
-                    <p className="type">{type} </p>
-                    <p className="area">{area} <i className="fa-solid fa-location-pin"></i> </p>
+            <AdminContext.Consumer>
+                {theme => (
+                    <div className="artist-profile-container">
+                    {adminPick && <p className="adminPick"> Admin Pick <i className="fas fa-star"></i> </p>}
+                    <div className="header-profile">
+                        <p className="type">{type} </p>
+                        <p className="area">{area} <i className="fa-solid fa-location-pin"></i> </p>
+                    </div> 
+                    <div className="title">
+                        <h2>{name}</h2>
+                        <span>{date}</span>
+                    </div>
+                    <div>{checkMusicSource(url)}</div>
+                    <p className="description">{description}</p>
+                    <p className="adminName"> Añadido por {adminName}</p>
+                    <p> El admin actual es {theme} </p>
                 </div>
-                <div className="title">
-                    <h2>{name}</h2>
-                    <span>{date}</span>
-                </div>
-                <div>{checkMusicSource(url)}</div>
-                <p className="description">{description}</p>
-                <p className="adminName"> {adminName}</p>
-            </div>
+            )}
+                    
+            </AdminContext.Consumer>
         )
     } else {
-        return (
+        return (  
             <div className="artist-profile-container">
                 <h1>Pincha un artista del mapa para ver toda su información</h1>
             </div>
