@@ -21,9 +21,7 @@ function App() {
 
 
   let handleClickSetMarker = (id) => {
-
-    if(id == null) setSelectedMarker({});
-
+    if(id == null) setSelectedMarker({})
     let copyElement = objData.objs.find(x => x.id === id)
     let element = { ...copyElement };
     setSelectedMarker(oldMarker => {
