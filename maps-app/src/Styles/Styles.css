@@ -74,6 +74,9 @@ body {
 .content-container .map-element-container {
   padding-left: 5px;
 }
+.content-container .map-element-container.admin .map {
+  height: 40rem;
+}
 .content-container .map-element-container .map {
   margin: 0 auto;
   height: 30rem;
@@ -135,7 +138,7 @@ body {
   transition: all 0.3s ease;
 }
 .content-container .profile-container .list-profile-container ul li p {
-  margin: 0px 0px 0px 5px ;
+  margin: 0px 0px 0px 5px;
 }
 .content-container .profile-container .list-profile-container ul li span {
   font-size: 0.8rem;
@@ -192,6 +195,53 @@ body {
   position: absolute;
   bottom: 0;
   margin-bottom: 10px;
+}
+.content-container .add-element-container {
+  padding: 10px;
+  background-color: #d7d9e6;
+  width: 25%;
+  color: black;
+  overflow-y: auto;
+}
+.content-container .add-element-container fieldset {
+  border: none;
+}
+.content-container .add-element-container input,
+.content-container .add-element-container label,
+.content-container .add-element-container select,
+.content-container .add-element-container textarea,
+.content-container .add-element-container button {
+  margin: 5px;
+  display: block;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 0px;
+  font-family: 'Albert Sans', sans-serif;
+}
+.content-container .add-element-container input:focus-visible,
+.content-container .add-element-container label:focus-visible,
+.content-container .add-element-container select:focus-visible,
+.content-container .add-element-container textarea:focus-visible,
+.content-container .add-element-container button:focus-visible {
+  outline: 3px solid #E89273 !important;
+}
+.content-container .add-element-container input,
+.content-container .add-element-container textarea,
+.content-container .add-element-container select,
+.content-container .add-element-container button {
+  padding: 5px;
+}
+.content-container .add-element-container button {
+  margin: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.content-container .add-element-container button:hover {
+  background-color: #E89273;
+}
+.content-container .add-element-container input[type="checkbox"]::before {
+  background-color: red;
 }
 .filters-container {
   margin: 10px;

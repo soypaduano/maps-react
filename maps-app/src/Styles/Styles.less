@@ -6,7 +6,12 @@
 @color-font: #ffffff;
 @font-1: 'Albert Sans', sans-serif;
 
-html, #root, body, .App, main, .content-container{
+html,
+#root,
+body,
+.App,
+main,
+.content-container {
   height: 100%;
 }
 
@@ -93,6 +98,12 @@ body {
   .map-element-container {
     padding-left: 5px;
 
+    &.admin{
+      .map{
+        height: 40rem;
+      }
+    }
+
     .map {
       margin: 0 auto;
       height: 30rem;
@@ -133,13 +144,13 @@ body {
     font-size: 1rem;
     height: 100%;
 
-    .list-profile-container{
+    .list-profile-container {
       font-size: 20px;
       position: relative;
       height: 100%;
       overflow-y: auto;
 
-      h3{
+      h3 {
         margin: 10px;
       }
 
@@ -148,6 +159,7 @@ body {
         margin: 0;
         padding: 0;
         list-style: none;
+
         li {
           padding: 2px;
           border-left: 0px;
@@ -156,17 +168,21 @@ body {
           border-bottom: 0px;
           border-color: black;
           border-style: solid;
-          p{
-            margin: 0px 0px 0px 5px ;
+
+          p {
+            margin: 0px 0px 0px 5px;
           }
+
           span {
             font-size: 0.8rem;
             margin-left: 5px;
           }
-          &:hover{
+
+          &:hover {
             cursor: pointer;
             background-color: @orange
           }
+
           transition: all 0.30s ease;
         }
       }
@@ -184,7 +200,7 @@ body {
         justify-content: space-between;
       }
 
-      .back{
+      .back {
         cursor: pointer;
       }
 
@@ -229,6 +245,52 @@ body {
         bottom: 0;
         margin-bottom: 10px;
       }
+    }
+  }
+
+  .add-element-container {
+    padding: 10px;
+    background-color: @background-color-profile;
+    width: 25%;
+    color: black;
+    overflow-y: auto;
+
+    fieldset{
+      border: none;
+    }
+
+    input,
+    label,
+    select,
+    textarea,
+    button {
+      margin: 5px;
+      display: block;
+      width: 80%;
+      border-radius: 10px;
+      box-shadow: none;
+      border: 0px;
+      font-family: @font-1;
+      &:focus-visible{
+        outline: 3px solid @orange !important;
+      }
+    }
+
+    input, textarea, select, button {
+      padding: 5px;
+    }
+
+    button {
+      margin: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+      &:hover{
+        background-color: @orange;
+      }
+    }
+
+    input[type="checkbox"]::before{
+      background-color: red;
     }
   }
 }

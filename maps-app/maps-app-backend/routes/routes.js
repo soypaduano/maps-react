@@ -15,7 +15,7 @@ router.post('/addMapElement', (request, response) => {
         adminPick: request.query.adminPick,
         date: request.query.date,
         lat: request.query.lat,
-        lon: request.query.lon
+        lng: request.query.lng
     })
 
     mapElement.save()

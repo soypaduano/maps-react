@@ -1,11 +1,10 @@
 import './Styles/Styles.css';
 import React from 'react';
-import AdminContext from './Components/AdminContext';
-import { useLoadScript} from "@react-google-maps/api";
-import Profile from './Components/Profile.js';
-import MapController from './Components/MapController.js'
+import { useLoadScript } from "@react-google-maps/api";
+import Profile from './Components/Client/Profile/Profile';
+import MapController from './Components/Client/Map/MapController'
 import objData from './Data/data.js'
-import Filters from './Components/Filters.js'
+import Filters from './Components/Client/Filters/Filters'
 
 function App() {
 
@@ -21,7 +20,7 @@ function App() {
 
 
   let handleClickSetMarker = (id) => {
-    if(id == null) setSelectedMarker({})
+    if (id == null) setSelectedMarker({})
     let copyElement = objData.objs.find(x => x.id === id)
     let element = { ...copyElement };
     setSelectedMarker(oldMarker => {
@@ -32,7 +31,7 @@ function App() {
 
   let handleClickSetFiltersApplied = (key, value) => {
     setFiltersApplied(oldFiltersApplied => {
-      return {...oldFiltersApplied, [key]: value };
+      return { ...oldFiltersApplied, [key]: value };
     })
   }
 
@@ -47,13 +46,12 @@ function App() {
     return (
       <div>
         <h1>Cargando...</h1>
-    </div>
+      </div>
     )
   } else {
     return (
       <div className="App">
         <main>
-          <AdminContext.Provider value={"Barbosa"}>
             <div className="content-container">
               <div className="map-container">
                 <div>
@@ -79,7 +77,6 @@ function App() {
                 {<Profile markerSelected={selectedMarker} objs={objData} handleClickSetMarker={handleClickSetMarker} />}
               </div>
             </div>
-          </AdminContext.Provider>
         </main>
       </div>
     );

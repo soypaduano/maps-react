@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import AdminContext from "./AdminContext";
+import AdminContext from "../../Admin/AdminContext";
 import ListElementContainer from "./ListElementContainer";
 
 function Profile(props) {

@@ -2,11 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import AppAdmin from './AppAdmin';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Link, Routes, Route, useNavigate } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <>
+        <Router>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/admin" element={<AppAdmin />} />
+            </Routes>
+        </Router>
+    </>
 );
 
 // If you want to start measuring performance in your app, pass a function

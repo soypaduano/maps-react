@@ -1,7 +1,6 @@
 import React from 'react';
-import { nanoid } from 'nanoid'
 //import shallowCompare from 'react-addons-shallow-compare'; // ES6
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { Marker} from "@react-google-maps/api";
 
 
 function MarkerComponent(props) {

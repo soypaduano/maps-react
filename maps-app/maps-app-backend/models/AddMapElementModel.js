@@ -41,7 +41,7 @@ const addMapElementTemplate = new mongoose.Schema({
         type: String,
         required: true
     },
-    lon: {
+    lng: {
         type: String,
         required: true
     }

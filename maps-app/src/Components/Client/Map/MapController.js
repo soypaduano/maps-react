@@ -27,7 +27,6 @@ function MapController(props) {
     return arr;
   }
 
-
   return (<GoogleMap id="map" zoom={10} mapTypeId='hybrid' center={selectedMarker.coord ? (selectedMarker.coord.lat, selectedMarker.coord.lng) : coord} mapContainerClassName={"map"} onClick={ev => { getLatLon(ev) }}>
     {console.log("renderizando el mapa")}
     {createMarkersForMap()}
