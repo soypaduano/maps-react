@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const addMapElementCopy = require('../models/AddMapElementModel')
 
+
+router.get('/hola' , (request, response) => {
+    let a = {hola: "hola"};
+    response.json(a)
+});
+
 router.post('/addMapElement', (request, response) => {
 
     const mapElement = new addMapElementCopy({
@@ -20,13 +26,13 @@ router.post('/addMapElement', (request, response) => {
 
     mapElement.save()
     .then(data => {
-        response.json();
+        response.json({code: "200", status: `Se ha añadido correctamente a ${mapElement.name} con un id de ${mapElement.id}  `});
     })
     .catch(error => {
+        console.log("el error es");
         console.log(error);
-        response.json(error);
+        response.json({code: "0", status: error.toString()});
     })
-
 });
 
 module.exports = router;

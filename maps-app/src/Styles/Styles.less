@@ -3,6 +3,7 @@
 @background-color-profile-hover: #bbbed1;
 @admin-pick-color: #FBE689;
 @orange: #E89273;
+@color-success: #4CB963;
 @color-font: #ffffff;
 @font-1: 'Albert Sans', sans-serif;
 
@@ -23,6 +24,21 @@ body {
   color: @color-font;
   font-family: @font-1;
   margin: 0;
+}
+
+p{
+  &.success{
+    padding: 10px;
+    border: 1px solid black;
+    color: white;
+    background-color: @color-success;
+  }
+  &.error{
+    background-color: #F03A47;
+    padding: 10px;
+    border: 1px solid black;
+    color: white;
+  }
 }
 
 .content-container {
@@ -254,10 +270,6 @@ body {
     width: 25%;
     color: black;
     overflow-y: auto;
-
-    fieldset{
-      border: none;
-    }
 
     input,
     label,

@@ -1,35 +1,69 @@
 import React from 'react';
 import { nanoid } from 'nanoid'
 
+
 function AddElementForm(props) {
 
     const [formData, setFormData] = React.useState(
-        { _id: nanoid(), name: "Jarfaiter", url: "https://www.youtube.com/watch?v=PlDdt6H-4CE", area: "Cuatro Caminos", description: "Una película de PHOSKIFILMS @phoskifilms", type: "Rap", date: "2010", adminPick: false, lat: props.coordinates.lat, lng: props.coordinates.lng, adminName: props.admin }
+        { id: nanoid(), name: "", url: "", area: "", description: "", type: "Rap", date: "", adminPick: false, lat: props.coordinates.lat, lng: props.coordinates.lng, adminName: props.admin }
     )
+    const [response, setResponse] = React.useState({});
 
-    const [disableForm, setDisableForm] = React.useState(false);
+    const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
 
     function handleChange(event) {
         let { name, value, type, checked } = event.target
-        console.log(formData);
+        console.log(event.target)
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
                 [name]: type === "checkbox" ? checked : value
             }
         })
+        console.log(formData)
     }
-    
+
+    let handleChangeSelect = (event) => {
+        let { value} = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                "type": value
+            }
+        })
+    }
+
+
     let handleSubmit = (e) => {
         e.preventDefault()
-        setDisableForm(true);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'React POST Request Example' })
+        };
+
+        let url = 'http://localhost:4000/app/addMapElement?'
+
+        for (const [key, value] of Object.entries(formData)) {
+            url += `${key}=${value}&`
+        }
+
+        fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            setResponse(data)
+        })
+        .catch(err => {
+            console.log("Ha habido un error")
+            setResponse(err);
+        })
     }
+
 
     return (
         <>
             <h2>Añade un elemento: </h2>
             <form onSubmit={e => handleSubmit(e)}>
-                <fieldset disabled={disableForm}>
                     <label>
                         Nombre*:
                         <input
@@ -66,14 +100,17 @@ function AddElementForm(props) {
 
                     <label>
                         Type*:
-                        <select type="select" required name="type" value={formData.type} onChange={handleChange}>
-                            <option value="Rap">Rap</option>
-                            <option value="Grupo">Grupo</option>
-                            <option value="Colectivo">Colectivo</option>
-                            <option value="Dj">Dj</option>
+                        <select
+                            required
+                            name="type"
+                            value={formData.type}
+                            onChange={handleChangeSelect}>
+                            {typeOptions.map(o => (
+                                <option key={o} value={o}>{o}</option>
+                            ))}
                         </select>
                     </label>
-
+                
                     <label>
                         Description:
                         <textarea
@@ -112,14 +149,14 @@ function AddElementForm(props) {
                         <input
                             type="text"
                             name="lat"
-                            disabled
+                            required
                             value={props.coordinates.lat}>
                         </input>
 
                         <input
                             type="text"
                             name="lng"
-                            disabled
+                            required
                             value={props.coordinates.lng}>
                         </input>
                     </label>
@@ -134,8 +171,9 @@ function AddElementForm(props) {
                         </input>
                     </label>
                     <button> Publicar elemento </button>
-                </fieldset>
             </form>
+
+            {response.code && <p className={response.code === "200" ? 'success' : 'error'}>{response.code}: {response.status}</p>}
         </>
     )
 }
