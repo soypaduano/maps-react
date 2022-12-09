@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid'
-
+const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
 
 function AddElementForm(props) {
 
@@ -9,18 +9,15 @@ function AddElementForm(props) {
     )
     const [response, setResponse] = React.useState({});
 
-    const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
 
     function handleChange(event) {
         let { name, value, type, checked } = event.target
-        console.log(event.target)
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
                 [name]: type === "checkbox" ? checked : value
             }
         })
-        console.log(formData)
     }
 
     let handleChangeSelect = (event) => {
@@ -41,13 +38,10 @@ function AddElementForm(props) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: 'React POST Request Example' })
         };
-
         let url = 'http://localhost:4000/app/addMapElement?'
-
         for (const [key, value] of Object.entries(formData)) {
             url += `${key}=${value}&`
         }
-
         fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -58,7 +52,6 @@ function AddElementForm(props) {
             setResponse(err);
         })
     }
-
 
     return (
         <>

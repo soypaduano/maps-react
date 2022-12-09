@@ -2,6 +2,7 @@ import React from 'react';
 import MapAdminController from './Components/Admin/MapAdminController'
 import { useLoadScript } from "@react-google-maps/api";
 import AddElementForm from './Components/Admin/AddElementForm'
+import objData from './Data/data'
 import './Styles/Styles.css';
 
 
@@ -29,7 +30,7 @@ function AppAdmin() {
             <div className="content-container">
               <div className="map-container">
                 <div className="map-element-container admin">
-                  <MapAdminController handleClickSetCoordinates={handleClickSetCoordinates}/>
+                  <MapAdminController handleClickSetCoordinates={handleClickSetCoordinates} objs={objData}/>
                 </div>
               </div>
               <div className="add-element-container">
