@@ -19,18 +19,16 @@ function Profile(props) {
             (
                 <div className="artist-profile-container">
                     <p onClick={() => { props.handleClickSetMarker(null) }} className="back"> <i className="fa-solid fa-arrow-left"></i> Ver todos</p>
-                    {adminPick && <p className="adminPick"> Admin Pick <i className="fas fa-star"></i> </p>}
+                    <div className="title">
+                        <h2>{name} {adminPick && <i class="fa-sharp fa-solid fa-star"></i>}</h2>
+                    </div>
+                    <div>{checkMusicSource(url)}</div>
                     <div className="header-profile">
                         <p className="type">{type} </p>
                         <p className="type">{date} </p>
                         <p className="area">{area} <i className="fa-solid fa-location-pin"></i> </p>
-
                     </div>
-                    <div className="title">
-                        <h2>{name}</h2>
-                    </div>
-                    <div>{checkMusicSource(url)}</div>
-                    <p className="description">{description}</p>
+                    <p className="description">{description ? description : "Este artista no tiene descripcion"}</p>
                     <p className="adminName"> Añadido por <b>{adminName}</b></p>
                 </div>
             )
