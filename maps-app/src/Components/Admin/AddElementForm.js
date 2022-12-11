@@ -5,17 +5,18 @@ const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
 function AddElementForm(props) {
 
     const [formData, setFormData] = React.useState(
-        { id: nanoid(), name: "", url: "", area: "", description: "", type: "Rap", date: "", adminPick: false, lat: props.coordinates.lat, lng: props.coordinates.lng, adminName: props.admin }
+        { id: nanoid(), name: undefined, url: undefined, area: undefined, description: undefined, type: "Rap", date: undefined, adminPick: false, lat: undefined, lng: undefined, adminName: props.admin }
     )
     const [response, setResponse] = React.useState({});
-
 
     function handleChange(event) {
         let { name, value, type, checked } = event.target
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
+                [name]: type === "checkbox" ? checked : value,
+                "lat": props.coordinates.lat,
+                "lng": props.coordinates.lng
             }
         })
     }
@@ -32,7 +33,7 @@ function AddElementForm(props) {
 
 
     let handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault()        
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -142,6 +143,7 @@ function AddElementForm(props) {
                         <input
                             type="text"
                             name="lat"
+                            onChange={handleChange}
                             required
                             value={props.coordinates.lat}>
                         </input>
@@ -149,6 +151,7 @@ function AddElementForm(props) {
                         <input
                             type="text"
                             name="lng"
+                            onChange={handleChange}
                             required
                             value={props.coordinates.lng}>
                         </input>

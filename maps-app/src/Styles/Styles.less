@@ -167,6 +167,7 @@ p{
     color: black;
     font-size: 1rem;
     height: 100%;
+    overflow-y: auto;
 
     .list-profile-container {
       font-size: 20px;
@@ -218,9 +219,9 @@ p{
       position: relative;
       height: 90%;
 
-      .header {
+      .header-profile {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
       }
 
@@ -248,7 +249,7 @@ p{
       }
 
       .description {
-        font-size: 0.7em;
+        font-size: 0.9em;
         padding: 5px;
       }
 
@@ -264,10 +265,6 @@ p{
 
       .adminName {
         font-size: 0.7em;
-        margin-bottom: 0;
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 10px;
       }
     }
   }

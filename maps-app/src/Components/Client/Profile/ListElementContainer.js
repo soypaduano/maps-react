@@ -1,12 +1,13 @@
 import React from 'react';
 import ListElement from './ListElement';
+import { nanoid } from 'nanoid'
 
 function ListElementContainer(props){
 
     let createElementListJsx = () => {
-        let arr = props.objs.objs.map(element => {
+        let arr = props.objs.map(element => {
             return( 
-                <ListElement element={element} handleClickSetMarker={props.handleClickSetMarker} />
+                <ListElement key={nanoid()} element={element} handleClickSetMarker={props.handleClickSetMarker} />
             )
         })
         return arr;

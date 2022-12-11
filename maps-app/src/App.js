@@ -3,14 +3,13 @@ import React from 'react';
 import { useLoadScript } from "@react-google-maps/api";
 import Profile from './Components/Client/Profile/Profile';
 import MapController from './Components/Client/Map/MapController'
-import objData from './Data/data.js'
 import Filters from './Components/Client/Filters/Filters'
 
 function App() {
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyA-YCkd4A-zjCH1mDUueq3vjgs1z_GGNks" });
-
   let [selectedMarker, setSelectedMarker] = React.useState({});
+  const [allMarkers, setAllMarkers] = React.useState([]);
   let [filtersApplied, setFiltersApplied] = React.useState({
     'Rap': true,
     'Grupos': true,
@@ -21,7 +20,7 @@ function App() {
 
   let handleClickSetMarker = (id) => {
     if (id == null) setSelectedMarker({})
-    let copyElement = objData.objs.find(x => x.id === id)
+    let copyElement = allMarkers.find(x => x.id === id)
     let element = { ...copyElement };
     setSelectedMarker(oldMarker => {
       element.isSelected = true;
@@ -36,11 +35,26 @@ function App() {
   }
 
   React.useEffect(() => {
-    objData.objs = objData.objs.map(element => {
-      element.isSelected = false;
-      return element;
+    callApi()
+    .then(res => {
+      const arr = res.map(element => {
+        element.isSelected = false;
+        return element;
+      })
+      console.log(arr);
+      setAllMarkers(arr);
     })
+    .catch(err => {
+      console.log(err)
+    });
   }, [])
+
+  let callApi = async () => {
+    const response = await fetch('http://localhost:4000/app/getAllElements');
+    const body = await response.json();
+    if (response.status !== 200) throw Error(body.message);
+    return body;
+  };
 
   if (!isLoaded) {
     return (
@@ -69,12 +83,12 @@ function App() {
                   </div>
                 </div>
                 <div className="map-element-container">
-                  <MapController handleClickSetMarker={handleClickSetMarker} objs={objData} selectedMarker={selectedMarker} filters={filtersApplied} />
+                  <MapController handleClickSetMarker={handleClickSetMarker} objs={allMarkers} selectedMarker={selectedMarker} filters={filtersApplied} />
                   <Filters handleClickSetFiltersApplied={handleClickSetFiltersApplied} filtersApplied={filtersApplied} />
                 </div>
               </div>
               <div className="profile-container">
-                {<Profile markerSelected={selectedMarker} objs={objData} handleClickSetMarker={handleClickSetMarker} />}
+                {<Profile markerSelected={selectedMarker} objs={allMarkers} handleClickSetMarker={handleClickSetMarker} />}
               </div>
             </div>
         </main>

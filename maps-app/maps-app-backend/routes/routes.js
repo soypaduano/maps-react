@@ -3,12 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const addMapElementCopy = require('../models/AddMapElementModel')
 
-
-router.get('/hola' , (request, response) => {
-    let a = {hola: "hola"};
-    response.json(a)
-});
-
 router.get('/dropTable', (request, response) => {
     console.log("entrando aqui")
     mongoose.connection.db.dropCollection('mapelements', function(err, result) {
@@ -16,8 +10,13 @@ router.get('/dropTable', (request, response) => {
     });
 });
 
-router.post('/addMapElement', (request, response) => {
+router.get('/getAllElements', (request, response) => {
+    addMapElementCopy.find({}).then(function (users) {
+            response.send(users);
+        });
+});
 
+router.post('/addMapElement', (request, response) => {
     const mapElement = new addMapElementCopy({
         id: request.query.id,
         name: request.query.name,

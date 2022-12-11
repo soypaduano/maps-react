@@ -5,11 +5,15 @@ import { Marker} from "@react-google-maps/api";
 
 function MarkerComponent(props) {
 
-    let {id, name, coord, type} = props.element;
+    //const coord = { lat: 40.41988, lng: -3.688780372508718 }
+    let {id, name, lat, lng, type} = props.element;
     let isSelected = props.selectedMarker.id ? props.selectedMarker.isSelected : false;
     let shouldIShow = true;
 
-    let markerClicked = (id) => props.handleClickSetMarker(id)
+    let markerClicked = (id) => {
+        debugger;
+        props.handleClickSetMarker(id)
+    }
 
     if(id != props.selectedMarker.id) isSelected = false;
 
@@ -24,10 +28,8 @@ function MarkerComponent(props) {
         return (
             <Marker key={id} onClick={() => {
                 markerClicked(id)
-            }} onHover={() => {
-                alert("hola?")
-            }} position=
-            {{ lat: coord.lat, lng: coord.lon }}
+            }} 
+            position={{ lat: parseFloat(lat), lng: parseFloat(lng) }}
             label={{
                 text: `${name}`,
                 fontFamily: 'Albert Sans, sans-serif',
