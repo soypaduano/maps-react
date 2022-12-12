@@ -25,6 +25,27 @@ p.error {
   border: 1px solid black;
   color: white;
 }
+p.loading {
+  text-align: center;
+}
+p.loading .loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .content-container {
   display: flex;
   flex-direction: row;
@@ -143,6 +164,7 @@ p.error {
 .content-container .profile-container .list-profile-container input {
   margin: 10px;
   padding: 5px;
+  border: 0px;
   border-radius: 5px;
 }
 .content-container .profile-container .list-profile-container h3 {
@@ -218,6 +240,7 @@ p.error {
   height: 200px;
 }
 .content-container .profile-container .artist-profile-container .adminName {
+  margin: 10px;
   font-size: 0.7em;
 }
 .content-container .add-element-container {
