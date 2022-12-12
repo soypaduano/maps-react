@@ -4,9 +4,8 @@ import React from 'react';
 
 function MapController(props) {
 
-  const coord = { lat: 40.41988, lng: -3.688780372508718 }
+  let coord = { lat: 40.41988, lng: -3.688780372508718 }
   let zoom = 10;
-
   let selectedMarker = props.selectedMarker;
 
   let getLatLon = (ev) => {
@@ -26,8 +25,16 @@ function MapController(props) {
     return arr;
   }
 
-  return (<GoogleMap id="map" zoom={zoom} mapTypeId='hybrid' center={selectedMarker.coord ? (selectedMarker.coord.lat, selectedMarker.coord.lng) : coord} mapContainerClassName={"map"} onClick={ev => { getLatLon(ev) }}>
+  if(selectedMarker.lat){
+    coord = { lat: parseFloat(selectedMarker.lat), lng: parseFloat(selectedMarker.lng)}
+    zoom = 15;
+  } 
+
+  return (
+    
+  <GoogleMap id="map" zoom={zoom} mapTypeId='hybrid' center={coord} mapContainerClassName={"map"} onClick={ev => { getLatLon(ev) }}>
     {console.log("renderizando el mapa")}
+    {console.log(selectedMarker.lat ? (selectedMarker.lat , selectedMarker.lng) : "")}
     {createMarkersForMap()}
   </GoogleMap>
   )
