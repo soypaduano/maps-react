@@ -27,7 +27,7 @@ function ListElementContainer(props){
         <div>
             <label>
                 Busca por nombre:  
-                <input value={nameFilter} onChange={handleSearchNameFilter} type="text"></input> <i class="fa-solid fa-magnifying-glass"></i>
+                <input value={nameFilter} onChange={handleSearchNameFilter} type="text"></input> <i className="fa-solid fa-magnifying-glass"></i>
             </label>
             <ul>
                 {createElementListJsx()}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ListElement(props){
-    let {id, name, type} = props.element;
+    let {id, name, type, area} = props.element;
     let filterName = props.nameFilter;
     let show = true;
 
@@ -13,11 +13,10 @@ function ListElement(props){
                 props.handleClickSetMarker(id);
             }}> 
                 <p> {name} </p>
-                <span> {type}</span>
+                <span> {type} - {area}</span>
             </li>
         )
     }
-    
 }
 
 export default ListElement;
