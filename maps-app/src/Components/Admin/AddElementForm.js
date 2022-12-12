@@ -1,12 +1,11 @@
 import React from 'react';
 import { nanoid } from 'nanoid'
+import {fetchPost} from './fetchAPI.js'
 const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
 
 function AddElementForm(props) {
 
-    const [formData, setFormData] = React.useState(
-        { id: nanoid(), name: undefined, url: undefined, area: undefined, description: undefined, type: "Rap", date: undefined, adminPick: false, lat: undefined, lng: undefined, adminName: props.admin }
-    )
+    const [formData, setFormData] = React.useState({name: undefined, url: undefined, area: undefined, description: undefined, type: "Rap", date: undefined, adminPick: false, adminName: props.admin })
     const [response, setResponse] = React.useState({});
 
     function handleChange(event) {
@@ -14,9 +13,7 @@ function AddElementForm(props) {
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
-                [name]: type === "checkbox" ? checked : value,
-                "lat": props.coordinates.lat,
-                "lng": props.coordinates.lng
+                [name]: type === "checkbox" ? checked : value
             }
         })
     }
@@ -31,25 +28,21 @@ function AddElementForm(props) {
         })
     }
 
-
     let handleSubmit = (e) => {
-        e.preventDefault()        
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React POST Request Example' })
-        };
+        e.preventDefault()     
+        setResponse({code: "loading"});
         let url = 'http://localhost:4000/app/addMapElement?'
         for (const [key, value] of Object.entries(formData)) {
             url += `${key}=${value}&`
         }
-        fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            setResponse(data)
+        url += `id=${nanoid()}&`
+        url += `lat=${props.coordinates.lat}&`
+        url += `lng=${props.coordinates.lng}`
+        fetchPost(url)
+        .then(response => {
+            setResponse(response)
         })
         .catch(err => {
-            console.log("Ha habido un error")
             setResponse(err);
         })
     }
@@ -168,8 +161,10 @@ function AddElementForm(props) {
                     </label>
                     <button> Publicar elemento </button>
             </form>
-
-            {response.code && <p className={response.code === "200" ? 'success' : 'error'}>{response.code}: {response.status}</p>}
+            {response.code === "loading" && <p className="loading"> <span class="loader"></span> </p>}
+            {response.code === "200" && <p className="success"> {response.code}: {response.status}</p>}
+            {response.code === "0" && <p className="error"> {response.code}: {response.status}</p>}
+            
         </>
     )
 }

@@ -8,7 +8,7 @@ function AdminMarkerComponent(props) {
     let {id, name, lat, lng} = props.element;
         return (
             <Marker key={id} onClick={() => {
-                alert("Editando..")
+                props.handleEditMarker(id);
             }} position=
             {{ lat: parseFloat(lat), lng: parseFloat(lng)}}
             label={{

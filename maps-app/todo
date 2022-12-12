@@ -2,5 +2,4 @@
 - Cambiar el color del maker selected a naranj
 - Meter LINT como una tarea
 - Pasar a un metodo o componente el fetch de las funciones
-- Error con la petición de artistas (manejar)
-
+- Mirarte bien como handlear errores en React

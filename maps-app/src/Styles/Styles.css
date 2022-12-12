@@ -284,6 +284,9 @@ p.loading .loader {
 .content-container .add-element-container button:hover {
   background-color: #E89273;
 }
+.content-container .add-element-container button.delete {
+  background-color: red;
+}
 .content-container .add-element-container input[type="checkbox"]::before {
   background-color: red;
 }

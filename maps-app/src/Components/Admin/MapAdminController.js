@@ -30,15 +30,15 @@ function MapAdminController(props) {
     }
   }
 
-  React.useEffect(() => {
+  let renderOldMarkers = () => {
     let arr = objs.map(element => {
-      return <AdminMarkerComponent key={element.id} element={element} admin={true}/>
+      return <AdminMarkerComponent key={element.id} element={element} admin={true} handleEditMarker={props.handleEditMarker}/>
     });
-    setOldMarkers(arr);
-  }, [objs]);
-  
+    return arr;
+  }
+
   return (<GoogleMap id="map" zoom={10} mapTypeId='hybrid' center={{lat: markerAdded.lat, lng: markerAdded.lng}} mapContainerClassName={"map"} onClick={ev => { getLatLon(ev) }}> 
-    {oldMarkers}
+    {renderOldMarkers()}
     {addPin()}
   </GoogleMap>)
 }
@@ -46,5 +46,5 @@ function MapAdminController(props) {
 export default React.memo(MapAdminController, areEqual);
 
 function areEqual(oldProps, newProps){
-  return true;
+  return false;
 }

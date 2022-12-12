@@ -10,10 +10,18 @@ router.get('/dropTable', (request, response) => {
     });
 });
 
+router.get('/deleteElement', (request, response) => {
+    let id = request.query.id;
+    addMapElementCopy.find({id: id}).deleteOne(function (error, user) {
+        if(error) response.json({code: "0", status: error.toString()});
+        response.json({code: "200", status: `Se ha eliminado correctamente a ${id}`});
+    });
+});
+
 router.get('/getAllElements', (request, response) => {
     addMapElementCopy.find({}).then(function (users) {
-            response.send(users);
-        });
+        response.send(users);
+    });
 });
 
 router.post('/addMapElement', (request, response) => {
@@ -36,8 +44,6 @@ router.post('/addMapElement', (request, response) => {
         response.json({code: "200", status: `Se ha añadido correctamente a ${mapElement.name} con un id de ${mapElement.id}  `});
     })
     .catch(error => {
-        console.log("el error es");
-        console.log(error);
         response.json({code: "0", status: error.toString()});
     })
 });
