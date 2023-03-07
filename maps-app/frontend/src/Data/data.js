@@ -1,13 +1,12 @@
 export default { "objs": [
     {
         id:"1",
-        coord: {
-            lat: 40.45739331889076,
-            lon: -3.6577911834592647
-        },
+        lat: 40.45739331889076,
+        lng: -3.6577911834592647
         name: "Supreme P",
         area: "Ciudad Lineal / Arturo Soria",
         description: "Rap de Ciudad Lineal to potente",
+        adminPick: false,
         date: 2016,
         url: "https://www.youtube.com/watch?v=rU_Eb6PrBy0",
         type: "Rap",
@@ -15,16 +14,16 @@ export default { "objs": [
     },
     {
         id:"2",
-        coord: {
-            lat: 40.40326753630597,
-            lon: -3.608905901127548
-        },
+        coord:
+        lat: 40.40326753630597,
+        lon: -3.608905901127548
         name: "Chirie Vegas",
         area: "Vicalvaro",
         description: `
         Chirie Vegas es un rapper madrileño, que forma parte de la escudería Gamberros Pro, un sello que lleva en funcionamiento un par de años y ha puesto en es escena los discos de varios grupos y artistas con una visión del Hip Hop llamativamente distinta al resto de propuestas.
         Música callejera, pero apasionada por los placeres de la vida… ganas de tener dinero y de disfrutar al máximo… coches, chicas, ropa y champang caro.`,
         date: 2002,
+        adminPick: false,
         url: "https://www.youtube.com/watch?v=JpnIQpsbyf4",
         type: "Rap",
         adminName: "Padu"

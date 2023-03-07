@@ -3,6 +3,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const addMapElementCopy = require('../models/AddMapElementModel')
 
+
+router.get('/checkBackend', (request, response) => {
+    response.json({code: "200", status: `El estado es correcto`});
+});
+
 router.get('/dropTable', (request, response) => {
     mongoose.connection.db.dropCollection('mapelements', function(err, result) {
         response.json(result);
