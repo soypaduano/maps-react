@@ -4,6 +4,7 @@ import { useLoadScript } from "@react-google-maps/api";
 import Profile from './Components/Client/Profile/Profile';
 import MapController from './Components/Client/Map/MapController'
 import Filters from './Components/Client/Filters/Filters'
+import ErrorBoundary from './Components/ErrorBoundary';
 
 function App() {
 
@@ -36,17 +37,16 @@ function App() {
 
   React.useEffect(() => {
     callApi()
-    .then(res => {
-      const arr = res.map(element => {
-        element.isSelected = false;
-        return element;
+      .then(res => {
+        const arr = res.map(element => {
+          element.isSelected = false;
+          return element;
+        })
+        setAllMarkers(arr);
       })
-      console.log(arr);
-      setAllMarkers(arr);
-    })
-    .catch(err => {
-      console.log(err)
-    });
+      .catch(err => {
+        throw Error(err);
+      });
   }, [])
 
   let callApi = async () => {
@@ -66,6 +66,7 @@ function App() {
     return (
       <div className="App">
         <main>
+          <ErrorBoundary>
             <div className="content-container">
               <div className="map-container">
                 <div>
@@ -91,6 +92,7 @@ function App() {
                 {<Profile markerSelected={selectedMarker} objs={allMarkers} handleClickSetMarker={handleClickSetMarker} />}
               </div>
             </div>
+          </ErrorBoundary>
         </main>
       </div>
     );

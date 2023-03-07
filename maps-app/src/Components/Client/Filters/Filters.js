@@ -20,10 +20,10 @@ function Filters(props) {
 
     return (
         <div className="filters-container">
-             <Checkbox label="Rap" value={props.filtersApplied["Rap"]} />
-             <Checkbox label="Grupos" value={props.filtersApplied["Grupos"]}/>
-             <Checkbox label="DJ" value={props.filtersApplied["DJ"]}/>
-             <Checkbox label="Colectivos" value={props.filtersApplied["Colectivos"]}/>
+             <Checkbox label="Rap" value={filtersApplied["Rap"]} />
+             <Checkbox label="Grupos" value={filtersApplied["Grupos"]}/>
+             <Checkbox label="DJ" value={filtersApplied["DJ"]}/>
+             <Checkbox label="Colectivos" value={filtersApplied["Colectivos"]}/>
         </div>
     )    
 }
@@ -32,7 +32,7 @@ export default React.memo(Filters, areEqual)
 
 
 function areEqual(oldProps, nextProps){
-    return oldProps != nextProps ? false : true;
+    return oldProps !== nextProps ? false : true;
 }
 
 

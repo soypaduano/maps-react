@@ -3,6 +3,8 @@
 @background-color-profile-hover: #bbbed1;
 @admin-pick-color: #FBE689;
 @orange: #E89273;
+@button-red: #FF3C38;
+@button-green: #8DE969;
 @color-success: #4CB963;
 @color-font: #ffffff;
 @font-1: 'Albert Sans', sans-serif;
@@ -60,6 +62,16 @@ p{
           transform: rotate(360deg);
       }
       } 
+  }
+}
+
+.error-page{
+  text-align: center;
+  padding: 10px;
+  a {
+    color: @background-color-profile;
+    font-weight: bold;
+    font-size: 25px;
   }
 }
 
@@ -146,7 +158,7 @@ p{
 
     .map {
       margin: 0 auto;
-      height: 30rem;
+      height: 35rem;
       padding: 10px;
       position: relative !important;
       display: block !important;
@@ -290,7 +302,6 @@ p{
       }
 
       h2 {
-        text-align: center;
         margin: 5px;
       }
 
@@ -312,6 +323,11 @@ p{
     width: 25%;
     color: black;
     overflow-y: auto;
+
+    .textarea-form{
+      height: 120px;
+      width: 100%;
+    }
 
     input,
     label,
@@ -338,11 +354,15 @@ p{
       margin: 10px;
       border: 1px solid black;
       cursor: pointer;
+      font-weight: bold;
       &:hover{
         background-color: @orange;
       }
       &.delete{
-        background-color: red;
+        background-color: @button-red;
+      }
+      &.save{
+        background-color: @button-green;
       }
     }
 

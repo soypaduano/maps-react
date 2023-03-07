@@ -40,6 +40,7 @@ function EditElementForm(props) {
 
     return (
         <>
+            <button onClick={() => props.handleEditMarker(null)}>Volver a añadir un elemento</button>
             <h2>Edita un elemento: </h2>
             <form onSubmit={(e) => {
                 e.preventDefault();
@@ -99,6 +100,7 @@ function EditElementForm(props) {
                     Description:
                     <textarea
                         onChange={handleChange}
+                        className="textarea-form"
                         name="description"
                         placeholder="Describe el artista o pilla una descripción de internet"
                         value={formData.description}>
@@ -156,7 +158,7 @@ function EditElementForm(props) {
                         value={formData.adminName}>
                     </input>
                 </label>
-                <button name="edit"> Editar elemento </button>
+                <button className="save" name="edit"> Editar elemento </button>
             </form>
             <button className="delete" name="delete" onClick={(e) => {
                 e.preventDefault();

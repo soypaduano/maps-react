@@ -1,5 +1,9 @@
 - Cambiar lo de lat-lon en la base de datos
 - Cambiar el color del maker selected a naranj
-- Meter LINT como una tarea
+- Meter LINT como una tarea (ya está, pero que aplique a todos los archivos)
+- añadir un custom checkmark
 - Pasar a un metodo o componente el fetch de las funciones
 - Mirarte bien como handlear errores en React
+- Meter hook de useRef 
+- Meter hook de useMemo (podríamos usarlo para los datos de artistas?)
+- Añadir tag de productores 

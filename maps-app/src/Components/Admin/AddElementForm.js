@@ -102,6 +102,7 @@ function AddElementForm(props) {
                         Description:
                         <textarea
                             onChange={handleChange}
+                            className="textarea-form"
                             name="description"
                             placeholder="Describe el artista o pilla una descripción de internet"
                             value={formData.description}>
@@ -159,7 +160,7 @@ function AddElementForm(props) {
                             value={props.admin}>
                         </input>
                     </label>
-                    <button> Publicar elemento </button>
+                    <button className="save"> Publicar elemento </button>
             </form>
             {response.code === "loading" && <p className="loading"> <span class="loader"></span> </p>}
             {response.code === "200" && <p className="success"> {response.code}: {response.status}</p>}

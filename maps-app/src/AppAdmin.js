@@ -22,9 +22,13 @@ function AppAdmin() {
   }
 
   let handleEditMarker = (id) => {
+    if (id == null) setEditMarker({})
     let copyElement = allMarkers.find(x => x.id === id)
     let element = { ...copyElement };
-    setEditMarker(element);
+    setEditMarker(oldMarker => {
+      element.isSelected = true;
+      return { ...element, isSelected: true };
+    })
   }
 
   React.useEffect(() => {
@@ -55,12 +59,12 @@ function AppAdmin() {
             <div className="content-container">
               <div className="map-container">
                 <div className="map-element-container admin">
-                  <MapAdminController handleClickSetCoordinates={handleClickSetCoordinates} handleEditMarker={handleEditMarker}  objs={allMarkers}/>
+                  <MapAdminController handleClickSetCoordinates={handleClickSetCoordinates} handleEditMarker={handleEditMarker}  objs={allMarkers} editMarker={editMarker}/>
                 </div>
               </div>
               <div className="add-element-container">
                 {editMarker.id === undefined && <AddElementForm coordinates={coordinates} admin={admin} />}
-                {editMarker.id !== undefined && <EditElementForm key={nanoid()}  editMarker={editMarker}/>}
+                {editMarker.id !== undefined && <EditElementForm key={nanoid()}  editMarker={editMarker} handleEditMarker={handleEditMarker}/>}
               </div>
             </div>
           </main>

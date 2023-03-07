@@ -46,5 +46,5 @@ function MapAdminController(props) {
 export default React.memo(MapAdminController, areEqual);
 
 function areEqual(oldProps, newProps){
-  return false;
+  return true;
 }

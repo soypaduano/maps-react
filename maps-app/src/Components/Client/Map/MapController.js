@@ -33,8 +33,6 @@ function MapController(props) {
   return (
     
   <GoogleMap id="map" zoom={zoom} mapTypeId='hybrid' center={coord} mapContainerClassName={"map"} onClick={ev => { getLatLon(ev) }}>
-    {console.log("renderizando el mapa")}
-    {console.log(selectedMarker.lat ? (selectedMarker.lat , selectedMarker.lng) : "")}
     {createMarkersForMap()}
   </GoogleMap>
   )
