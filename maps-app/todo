@@ -5,10 +5,6 @@
 - Meter hook de useRef 
 - Meter hook de useMemo (podríamos usarlo para los datos de artistas?)
 - Añadir tag de productores 
-- Anadir Material UI al proyecto. 
 - Anadir un ReadMe. 
-- Anadir en el backend objetos de tipo response
 - Probar nuevos estilos
-- Anadir material UI al admin
-- En Admin no se esta cargando los pines correctamente
-
+- Anadir a otro componente todo el formulario (estas usando el mismo)

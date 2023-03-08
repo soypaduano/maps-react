@@ -42,8 +42,4 @@ function MapAdminController(props) {
   </GoogleMap>)
 }
 
-export default React.memo(MapAdminController, areEqual);
-
-function areEqual(oldProps, newProps){
-  return true;
-}
+export default MapAdminController;

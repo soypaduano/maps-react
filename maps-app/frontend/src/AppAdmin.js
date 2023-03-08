@@ -52,8 +52,9 @@ function AppAdmin() {
         <h1>Cargando...</h1>
       </div>
     )
-  } else {
-    return (
+  } 
+
+  return (
         <div className="App">
           <main>
             <div className="content-container">
@@ -71,6 +72,5 @@ function AppAdmin() {
         </div>
     );
   }
-}
 
 export default AppAdmin;

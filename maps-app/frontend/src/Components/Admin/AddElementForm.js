@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { nanoid } from "nanoid";
 import { fetchPost } from "./fetchAPI.js";
-import Button from "@mui/material/Button";
 import {
+  Button,
   Alert,
   AlertTitle,
   TextField,
@@ -12,9 +12,7 @@ import {
   FormControlLabel,
   Checkbox,
   LinearProgress,
-  Box,
-  Typography,
-  FormGroup
+  Box
 } from "@mui/material";
 
 const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"];
@@ -149,6 +147,7 @@ function AddElementForm(props) {
             </MenuItem>
           ))}
         </Select>
+
         <TextField
           placeholder="Escribe una descripcion sobre el artista o pillala de internet"
           multiline
