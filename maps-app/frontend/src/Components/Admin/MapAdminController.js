@@ -6,7 +6,6 @@ import { nanoid } from 'nanoid'
 function MapAdminController(props) {
   const objs = props.objs;
   const [markerAdded, setMarkerAdded] = React.useState({lat: 40.41988, lng: -3.688780372508718})
-  const [oldMarkers, setOldMarkers] = React.useState([]);
 
   let getLatLon = (ev) => {
     let stringCoords = {
