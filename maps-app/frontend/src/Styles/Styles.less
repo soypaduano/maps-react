@@ -323,16 +323,10 @@ p{
     width: 25%;
     color: black;
     overflow-y: auto;
-
-    .textarea-form{
-      height: 120px;
-      width: 100%;
-    }
-
+    
     input,
     label,
     select,
-    textarea,
     button {
       margin: 5px;
       display: block;
@@ -341,33 +335,15 @@ p{
       box-shadow: none;
       border: 0px;
       font-family: @font-1;
-      &:focus-visible{
-        outline: 3px solid @orange !important;
-      }
     }
 
-    input, textarea, select, button {
-      padding: 5px;
-    }
-
-    button {
-      margin: 10px;
+    Button {
       border: 1px solid black;
-      cursor: pointer;
-      font-weight: bold;
+      color: black;
       &:hover{
-        background-color: @orange;
+        background-color: #847996;
+        color: white;
       }
-      &.delete{
-        background-color: @button-red;
-      }
-      &.save{
-        background-color: @button-green;
-      }
-    }
-
-    input[type="checkbox"]::before{
-      background-color: red;
     }
   }
 }

@@ -1,4 +1,4 @@
-import "./Styles/Styles.css";
+import "./Styles/Styles.less";
 import React from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Profile from "./Components/Client/Profile/Profile";

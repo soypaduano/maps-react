@@ -9,5 +9,6 @@
 - Anadir un ReadMe. 
 - Anadir en el backend objetos de tipo response
 - Probar nuevos estilos
-- Anadir material UI al servidor 
+- Anadir material UI al admin
+- En Admin no se esta cargando los pines correctamente
 

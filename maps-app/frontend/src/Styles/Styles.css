@@ -258,14 +258,9 @@ p.loading .loader {
   color: black;
   overflow-y: auto;
 }
-.content-container .add-element-container .textarea-form {
-  height: 120px;
-  width: 100%;
-}
 .content-container .add-element-container input,
 .content-container .add-element-container label,
 .content-container .add-element-container select,
-.content-container .add-element-container textarea,
 .content-container .add-element-container button {
   margin: 5px;
   display: block;
@@ -275,36 +270,13 @@ p.loading .loader {
   border: 0px;
   font-family: 'Albert Sans', sans-serif;
 }
-.content-container .add-element-container input:focus-visible,
-.content-container .add-element-container label:focus-visible,
-.content-container .add-element-container select:focus-visible,
-.content-container .add-element-container textarea:focus-visible,
-.content-container .add-element-container button:focus-visible {
-  outline: 3px solid #E89273 !important;
-}
-.content-container .add-element-container input,
-.content-container .add-element-container textarea,
-.content-container .add-element-container select,
-.content-container .add-element-container button {
-  padding: 5px;
-}
-.content-container .add-element-container button {
-  margin: 10px;
+.content-container .add-element-container Button {
   border: 1px solid black;
-  cursor: pointer;
-  font-weight: bold;
+  color: black;
 }
-.content-container .add-element-container button:hover {
-  background-color: #E89273;
-}
-.content-container .add-element-container button.delete {
-  background-color: #FF3C38;
-}
-.content-container .add-element-container button.save {
-  background-color: #8DE969;
-}
-.content-container .add-element-container input[type="checkbox"]::before {
-  background-color: red;
+.content-container .add-element-container Button:hover {
+  background-color: #847996;
+  color: white;
 }
 .filters-container {
   margin: 10px;

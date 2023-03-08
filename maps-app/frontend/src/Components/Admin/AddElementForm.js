@@ -1,174 +1,232 @@
-import React from 'react';
-import { nanoid } from 'nanoid'
-import {fetchPost} from './fetchAPI.js'
-const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"]
+import React, { useRef } from "react";
+import { nanoid } from "nanoid";
+import { fetchPost } from "./fetchAPI.js";
+import Button from "@mui/material/Button";
+import {
+  Alert,
+  AlertTitle,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControlLabel,
+  Checkbox,
+  LinearProgress,
+  Box,
+  Typography,
+  FormGroup
+} from "@mui/material";
+
+const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"];
 
 function AddElementForm(props) {
+  const [formData, setFormData] = React.useState({
+    name: undefined,
+    url: undefined,
+    area: undefined,
+    description: undefined,
+    type: "Rap",
+    date: undefined,
+    adminPick: false,
+    adminName: props.admin,
+  });
+  const [response, setResponse] = React.useState({});
+  const coordinateLatRef = useRef(null);
+  const coordinateLngRef = useRef(null);
 
-    const [formData, setFormData] = React.useState({name: undefined, url: undefined, area: undefined, description: undefined, type: "Rap", date: undefined, adminPick: false, adminName: props.admin })
-    const [response, setResponse] = React.useState({});
 
-    function handleChange(event) {
-        let { name, value, type, checked } = event.target
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
+  function handleChange(event) {
+    let { name, value, type, checked } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
+    console.log(formData)
+  }
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    setResponse({ code: "loading" });
+    let url = "http://localhost:4000/app/addMapElement?";
+    for (const [key, value] of Object.entries(formData)) {
+      url += `${key}=${value}&`;
     }
+    url += `id=${nanoid()}&`;
+    url += `lat=${props.coordinates.lat}&`;
+    url += `lng=${props.coordinates.lng}`;
+    debugger;
+    fetchPost(url)
+      .then((response) => {
+        setResponse(response);
+      })
+      .catch((err) => {
+        setResponse(err);
+      });
+  };
 
-    let handleChangeSelect = (event) => {
-        let { value} = event.target
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                "type": value
-            }
-        })
-    }
+  let setTestForm = () => {
+    setFormData({
+      name: nanoid().toString(),
+      url: nanoid().toString(),
+      area: "Barrio 1",
+      description: "Descripcion 1",
+      type: "Rap",
+      date: "2019",
+      adminPick: true,
+      adminName: props.admin,
+    });
+    coordinateLatRef.current.value = 40.425107321040706;
+    coordinateLngRef.current.value = 3.6172404936634983;
+  };
 
-    let handleSubmit = (e) => {
-        e.preventDefault()     
-        setResponse({code: "loading"});
-        let url = 'http://localhost:4000/app/addMapElement?'
-        for (const [key, value] of Object.entries(formData)) {
-            url += `${key}=${value}&`
-        }
-        url += `id=${nanoid()}&`
-        url += `lat=${props.coordinates.lat}&`
-        url += `lng=${props.coordinates.lng}`
-        fetchPost(url)
-        .then(response => {
-            setResponse(response)
-        })
-        .catch(err => {
-            setResponse(err);
-        })
-    }
+  React.useEffect(() => {
+    coordinateLatRef.current.value = 5
+    coordinateLngRef.current.value = 5
+}, [])
 
-    return (
-        <>
-            <h2>Añade un elemento: </h2>
-            <form onSubmit={e => handleSubmit(e)}>
-                    <label>
-                        Nombre*:
-                        <input
-                            type="text"
-                            required
-                            onChange={handleChange}
-                            name="name"
-                            value={formData.name}>
-                        </input>
-                    </label>
+  return (
+    <>
+      <Button onClick={() => setTestForm()}>Fill all the data</Button>
+      <form onSubmit={(e) => handleSubmit(e)}>
+      <h4><b> Rellena todos los datos </b> para subir un artista a la base de datos</h4>
+        <TextField
+          label="Nombre"
+          variant="standard"
+          required
+          onChange={handleChange}
+          name="name"
+          value={formData.name}
+          sx={{width: '90%'}}
+        />
+        <TextField
+          label="Url"
+          variant="standard"
+          required
+          placeholder="Youtube o Soundcloud"
+          onChange={handleChange}
+          name="url"
+          value={formData.url}
+          sx={{width: '90%'}}
+        />
 
-                    <label>
-                        Url (Youtube y Soundcloud)*
-                        <input
-                            type="text"
-                            required
-                            onChange={handleChange}
-                            name="url"
-                            value={formData.url}>
-                        </input>
-                    </label>
+        <TextField
+          label="Area"
+          variant="standard"
+          required
+          onChange={handleChange}
+          name="area"
+          placeholder="Ej: Vallecas"
+          value={formData.area}
+          sx={{width: '90%'}}
+        />
 
-                    <label>
-                        Area / Zona*:
-                        <input
-                            type="text"
-                            required
-                            onChange={handleChange}
-                            name="area"
-                            placeholder="Pon un barrio. Ej: Quintana"
-                            value={formData.area}>
-                        </input>
-                    </label>
+        <TextField
+          label="Date"
+          variant="standard"
+          required
+          onChange={handleChange}
+          name="date"
+          placeholder="Ej: 2019"
+          value={formData.date}
+          sx={{width: '90%', marginBottom: '10px'}}
+        />
 
-                    <label>
-                        Type*:
-                        <select
-                            required
-                            name="type"
-                            value={formData.type}
-                            onChange={handleChangeSelect}>
-                            {typeOptions.map(o => (
-                                <option key={o} value={o}>{o}</option>
-                            ))}
-                        </select>
-                    </label>
-                
-                    <label>
-                        Description:
-                        <textarea
-                            onChange={handleChange}
-                            className="textarea-form"
-                            name="description"
-                            placeholder="Describe el artista o pilla una descripción de internet"
-                            value={formData.description}>
-                        </textarea>
-                    </label>
+        <InputLabel id="tipo-label">Tipo</InputLabel>
+        <Select
+          sx={{width: '100%'}}
+          labelId="tipo-label"
+          id="demo-simple-select"
+          name="type"
+          value={formData.type}
+          label="Tipo"
+          onChange={handleChange}
+        >
+          {typeOptions.map((o) => (
+            <MenuItem key={o} value={o}>
+              {o}
+            </MenuItem>
+          ))}
+        </Select>
+        <TextField
+          placeholder="Escribe una descripcion sobre el artista o pillala de internet"
+          multiline
+          label="Descripcion"
+          name="description"
+          rows={3}
+          value={formData.description}
+          onChange={handleChange}
+          sx={{width: '100%', marginTop: '5px'}}
+        />
 
-                    <label>
-                        Date:
-                        <input
-                            type="text"
-                            onChange={handleChange}
-                            name="date"
-                            placeholder="Ej: 2019"
-                            value={formData.date}>
-                        </input>
-                    </label>
+        <FormControlLabel
+          control={
+            <Checkbox
+              defaultChecked
+              onChange={handleChange}
+              name="adminPick"
+              value={formData.adminPick}
+            />
+          }
+          label="Admin Pick"
+        />
 
+        <Box sx={{ display: "flex", flexDirection: "row", margin: "10px" }}>
+          <TextField
+            label="Latitude"
+            variant="standard"
+            required
+            disabled
+            InputLabelProps={{ shrink: true }}
+            onChange={handleChange}
+            name="lat"
+            ref={coordinateLatRef}
+            value={props.coordinates.lat}
+          />
 
-                    <label style={{ "display": "flex", "alignItems": "center" }}>
-                        Admin Pick
-                        <input
-                            type="checkbox"
-                            onChange={handleChange}
-                            name="adminPick"
-                            style={{ "width": "20%" }}
-                            value={formData.adminPick}>
-                        </input>
-                    </label>
+          <TextField
+            label="Longitude"
+            variant="standard"
+            required
+            InputLabelProps={{ shrink: true }}
+            disabled
+            onChange={handleChange}
+            name="lng"
+            ref={coordinateLngRef}
+            value={props.coordinates.lng}
+          />
+        </Box>
 
-                    <label style={{ "display": "flex", "alignItems": "center" }}>
-                        Coordinates
-                        <input
-                            type="text"
-                            name="lat"
-                            onChange={handleChange}
-                            required
-                            value={props.coordinates.lat}>
-                        </input>
+        <TextField
+          label="Admin Name"
+          variant="standard"
+          required
+          onChange={handleChange}
+          name="lng"
+          disabled
+          value={props.admin}
+        />
 
-                        <input
-                            type="text"
-                            name="lng"
-                            onChange={handleChange}
-                            required
-                            value={props.coordinates.lng}>
-                        </input>
-                    </label>
+        <Button type="submit"> Publicar elemento </Button>
+      </form>
 
-                    <label>
-                        Admin Name:
-                        <input
-                            type="text"
-                            name="adminName"
-                            disabled
-                            value={props.admin}>
-                        </input>
-                    </label>
-                    <button className="save"> Publicar elemento </button>
-            </form>
-            {response.code === "loading" && <p className="loading"> <span class="loader"></span> </p>}
-            {response.code === "200" && <p className="success"> {response.code}: {response.status}</p>}
-            {response.code === "0" && <p className="error"> {response.code}: {response.status}</p>}
-            
-        </>
-    )
+      {response.code === "loading" && <LinearProgress />}
+      {response.code === "200" && (
+        <Alert severity="success">
+          <AlertTitle>Bien!</AlertTitle>
+          {console.log(response)}
+          <strong>{response.response}</strong>
+        </Alert>
+      )}
+      {response.code === "0" && (
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          <strong>{response.response}</strong>
+        </Alert>
+      )}
+    </>
+  );
 }
 
 export default AddElementForm;
-
