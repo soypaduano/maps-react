@@ -7,11 +7,13 @@ import EditElementForm from './Components/Admin/EditElementForm'
 import callApi from "./utils/fetchUtil.js";
 import './Styles/Styles.css';
 import Loading from './Components/Loading/Loading';
+import AlertConnection from './Components/AlertConnection/AlertConnection';
 
 
 function AppAdmin() {
 
   const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyA-YCkd4A-zjCH1mDUueq3vjgs1z_GGNks" });
+  const [markersLoaded, setMarkersLoaded] = React.useState(false);
   const [coordinates, setCoordinates] = React.useState({});
   const [allMarkers, setAllMarkers] = React.useState([]);
   const [admin, setAdmin] = React.useState("");
@@ -36,9 +38,11 @@ function AppAdmin() {
     callApi('http://localhost:4000/app/getAllElements')
     .then(res => {
       setAllMarkers(res);
+      setMarkersLoaded(true);
     })
     .catch(err => {
       console.log(err)
+      setMarkersLoaded(false);
     });
 
     setAdmin("Padu")
@@ -46,17 +50,19 @@ function AppAdmin() {
   }, [])
 
 
-  if (true) {
+  if (!isLoaded && !markersLoaded) {
     return (
       <Loading />
     )
   } 
+
 
   return (
         <div className="App">
           <main>
             <div className="content-container">
               <div className="map-container">
+              <AlertConnection show={!markersLoaded}/>
                 <div className="map-element-container admin">
                   <MapAdminController handleClickSetCoordinates={handleClickSetCoordinates} handleEditMarker={handleEditMarker}  objs={allMarkers} editMarker={editMarker}/>
                 </div>

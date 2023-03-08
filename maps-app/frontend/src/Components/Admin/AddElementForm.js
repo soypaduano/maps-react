@@ -12,7 +12,8 @@ import {
   FormControlLabel,
   Checkbox,
   LinearProgress,
-  Box
+  Box,
+  Typography
 } from "@mui/material";
 
 const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"];
@@ -54,13 +55,12 @@ function AddElementForm(props) {
     url += `id=${nanoid()}&`;
     url += `lat=${props.coordinates.lat}&`;
     url += `lng=${props.coordinates.lng}`;
-    debugger;
     fetchPost(url)
       .then((response) => {
         setResponse(response);
       })
       .catch((err) => {
-        setResponse(err);
+        err.code ? setResponse(err) : setResponse({code: '0', response: 'El backend esta caido'})
       });
   };
 
@@ -88,7 +88,7 @@ function AddElementForm(props) {
     <>
       <Button onClick={() => setTestForm()}>Fill all the data</Button>
       <form onSubmit={(e) => handleSubmit(e)}>
-      <h4><b> Rellena todos los datos </b> para subir un artista a la base de datos</h4>
+      <Typography><b> Rellena todos los datos </b> para subir un artista a la base de datos</Typography>
         <TextField
           label="Nombre"
           variant="standard"
@@ -209,6 +209,9 @@ function AddElementForm(props) {
 
         <Button type="submit"> Publicar elemento </Button>
       </form>
+
+
+          {console.log(response)}
 
       {response.code === "loading" && <LinearProgress />}
       {response.code === "200" && (

@@ -1,10 +1,11 @@
 - Cambiar lo de lat-lon en la base de datos
-- Cambiar el color del maker selected a naranj
-- Añadir un custom checkmark
+- Cambiar el color del maker selected a naranja
+- Añadir un custom checkmark (MATERIAL UI)
 - Mirarte bien como handlear errores en React
-- Meter hook de useRef 
 - Meter hook de useMemo (podríamos usarlo para los datos de artistas?)
 - Añadir tag de productores 
 - Anadir un ReadMe. 
 - Probar nuevos estilos
 - Anadir a otro componente todo el formulario (estas usando el mismo)
+- Anadir el error boundary en el admin
+- Mirar bien lo de que el artista no tiene descripcion
