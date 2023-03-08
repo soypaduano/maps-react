@@ -1,21 +1,15 @@
 import React from 'react';
 import ListElement from './ListElement';
 import { nanoid } from 'nanoid'
+import {TextField, InputAdornment, Typography, Box} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 function ListElementContainer(props){
 
     const [nameFilter, setNameFilter] = React.useState("");
 
     let createElementListJsx = () => {
-
-
-        
-        let arr = props.objs.sort((a, b) => a.name.localeCompare(b.name)).map(element => {
-            return( 
-                <ListElement key={nanoid()} element={element} handleClickSetMarker={props.handleClickSetMarker} nameFilter={nameFilter}/>
-            )
-        })
-        return arr;
+        return props.objs.sort((a, b) => a.name.localeCompare(b.name)).map(element => <ListElement key={nanoid()} element={element} handleClickSetMarker={props.handleClickSetMarker} nameFilter={nameFilter}/>)
     }
 
     let handleSearchNameFilter = (event) => {
@@ -25,10 +19,26 @@ function ListElementContainer(props){
 
     return (
         <div>
-            <label>
-                Busca por nombre:  
-                <input value={nameFilter} onChange={handleSearchNameFilter} type="text"></input> <i className="fa-solid fa-magnifying-glass"></i>
-            </label>
+          <Box sx={{padding: '10px'}}>
+            <Typography variant='h5'>Pincha un artista del mapa para ver toda su información</Typography>
+          </Box>
+        
+        <TextField
+          label="Busca por nombre"
+          variant="standard"
+          name="name"
+          onChange={handleSearchNameFilter}
+          value={nameFilter}
+          sx={{width: '100%'}}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+
             <ul>
                 {createElementListJsx()}
             </ul>

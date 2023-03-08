@@ -8,8 +8,8 @@ import ErrorBoundary from "./Components/ErrorBoundary";
 import Header from "./Components/Client/Header/Header";
 import callApi from "./utils/fetchUtil.js";
 import localData from "./Data/localData";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
+import {Alert, AlertTitle} from "@mui/material";
+import Loading from './Components/Loading/Loading';
 
 function App() {
   const { isLoaded } = useLoadScript({
@@ -71,9 +71,7 @@ function App() {
 
   if (!isLoaded || !markersLoaded) {
     return (
-      <div>
-        <h1>Cargando...</h1>
-      </div>
+      <Loading />
     );
   }
 

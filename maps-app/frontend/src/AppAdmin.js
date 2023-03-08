@@ -4,8 +4,9 @@ import { useLoadScript } from "@react-google-maps/api";
 import { nanoid } from 'nanoid'
 import AddElementForm from './Components/Admin/AddElementForm'
 import EditElementForm from './Components/Admin/EditElementForm'
-import {fetchCall} from './Components/Admin/fetchAPI.js'
+import callApi from "./utils/fetchUtil.js";
 import './Styles/Styles.css';
+import Loading from './Components/Loading/Loading';
 
 
 function AppAdmin() {
@@ -32,7 +33,7 @@ function AppAdmin() {
   }
 
   React.useEffect(() => {
-    fetchCall('http://localhost:4000/app/getAllElements')
+    callApi('http://localhost:4000/app/getAllElements')
     .then(res => {
       setAllMarkers(res);
     })
@@ -40,17 +41,14 @@ function AppAdmin() {
       console.log(err)
     });
 
-    //setAdmin(prompt("Introduce tu nombre, admin."))
     setAdmin("Padu")
 
   }, [])
 
 
-  if (!isLoaded) {
+  if (true) {
     return (
-      <div>
-        <h1>Cargando...</h1>
-      </div>
+      <Loading />
     )
   } 
 

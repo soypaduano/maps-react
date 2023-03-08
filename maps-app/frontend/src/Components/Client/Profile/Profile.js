@@ -1,4 +1,6 @@
 import ListElementContainer from "./ListElementContainer";
+import {Button, Divider, Container, Box, Typography} from "@mui/material";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 function Profile(props) {
 
@@ -18,17 +20,19 @@ function Profile(props) {
 
             (
                 <div className="artist-profile-container">
-                    <p onClick={() => { props.handleClickSetMarker(null) }} className="back"> <i className="fa-solid fa-arrow-left"></i> Ver todos</p>
-                    <div className="title">
-                        <h2>{name} {adminPick && <i class="fa-sharp fa-solid fa-star"></i>}</h2>
-                    </div>
-                    <div>{checkMusicSource(url)}</div>
-                    <div className="header-profile">
-                        <p className="type">{type} </p>
-                        <p className="type">{date} </p>
-                        <p className="area">{area} <i className="fa-solid fa-location-pin"></i> </p>
-                    </div>
-                    <p className="description">{description ? description : "Este artista no tiene descripcion"}</p>
+                    <Button onClick={() => { props.handleClickSetMarker(null) }}> 
+                    <FormatListBulletedIcon sx={{margin: '5px'}}/>
+                        Volver a la lista
+                    </Button>
+                    <Divider />
+                    <Container sx={{marginTop: '10px'}}>
+                        <Typography variant="h4">{name}</Typography>
+                        <span>{date} - {area} </span>
+                        <div>{checkMusicSource(url)}</div>
+                    </Container>
+                    <Box>
+                        <Typography className="description">{description ? description : "Este artista no tiene descripcion"}</Typography>
+                    </Box>
                     <p className="adminName"> Añadido por <b>{adminName}</b></p>
                 </div>
             )
@@ -38,7 +42,6 @@ function Profile(props) {
     } else {
         return (
             <div className="list-profile-container">
-                <h3>Pincha un artista del mapa para ver toda su información</h3>
                 <ListElementContainer objs={props.objs} handleClickSetMarker={props.handleClickSetMarker} />
             </div>
         )
