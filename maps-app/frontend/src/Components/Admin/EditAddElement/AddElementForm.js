@@ -1,48 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
+import { nanoid } from "nanoid";
+import { fetchPost } from "../fetchAPI.js";
 import {
   Button,
+  Alert,
+  AlertTitle,
   TextField,
   Select,
   MenuItem,
   InputLabel,
   FormControlLabel,
   Checkbox,
+  LinearProgress,
   Box,
+  Typography
 } from "@mui/material";
-import { fetchCall } from "./fetchAPI.js";
-import {typeOptions} from "../../utils/types.js";
 
-function EditElementForm(props) {
-  const {
-    id,
-    name,
-    url,
-    area,
-    description,
-    type,
-    date,
-    adminPick,
-    lat,
-    lng,
-    adminName,
-  } = props.editMarker;
-  let [formData, setFormData] = React.useState({
-    id: id,
-    name: name,
-    url: url,
-    area: area,
-    description: description,
-    type: type,
-    date: date,
-    adminPick: adminPick,
-    lat: lat,
-    lng: lng,
-    adminName: adminName,
+import {typeOptions} from "../../../utils/types.js";
+
+function AddElementForm(props) {
+  const [formData, setFormData] = React.useState({
+    name: undefined,
+    url: undefined,
+    area: undefined,
+    description: undefined,
+    type: "Rap",
+    date: undefined,
+    adminPick: false,
+    adminName: props.admin,
   });
-
   const [response, setResponse] = React.useState({});
-  const coordinateLatRef = React.useRef(null)
-  const coordinateLngRef = React.useRef(null)
+  const coordinateLatRef = useRef(null);
+  const coordinateLngRef = useRef(null);
+
 
   function handleChange(event) {
     let { name, value, type, checked } = event.target;
@@ -54,33 +44,50 @@ function EditElementForm(props) {
     });
   }
 
-  let deleteElement = () => {
-    setResponse("loading");
-    fetchCall("http://localhost:4000/app/deleteElement?id=" + id)
-      .then((res) => {
-        setResponse(res);
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    setResponse({ code: "loading" });
+    let url = "http://localhost:4000/app/addMapElement?";
+    for (const [key, value] of Object.entries(formData)) {
+      url += `${key}=${value}&`;
+    }
+    url += `id=${nanoid()}&`;
+    url += `lat=${props.coordinates.lat}&`;
+    url += `lng=${props.coordinates.lng}`;
+    fetchPost(url)
+      .then((response) => {
+        setResponse(response);
       })
       .catch((err) => {
-        console.log(err);
+        err.code ? setResponse(err) : setResponse({code: '0', response: 'El backend esta caido'})
       });
   };
 
+  let setTestForm = () => {
+    setFormData({
+      name: nanoid().toString(),
+      url: nanoid().toString(),
+      area: "Barrio 1",
+      description: "Descripcion 1",
+      type: "Rap",
+      date: "2019",
+      adminPick: true,
+      adminName: props.admin,
+    });
+    coordinateLatRef.current.value = 40.425107321040706;
+    coordinateLngRef.current.value = 3.6172404936634983;
+  };
+
+  React.useEffect(() => {
+    coordinateLatRef.current.value = 5
+    coordinateLngRef.current.value = 5
+}, [])
+
   return (
     <>
-      <Button onClick={() => props.handleEditMarker(null)}>
-        Volver a crear elemento
-      </Button>
-      <h2>Edita un elemento: </h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(e);
-        }}
-      >
-        <label>
-          Id: <b>{id}</b>
-        </label>
-
+      <Button onClick={() => setTestForm()}>Fill all the data</Button>
+      <form onSubmit={(e) => handleSubmit(e)}>
+      <Typography><b> Rellena todos los datos </b> para subir un artista a la base de datos</Typography>
         <TextField
           label="Nombre"
           variant="standard"
@@ -88,9 +95,8 @@ function EditElementForm(props) {
           onChange={handleChange}
           name="name"
           value={formData.name}
-          sx={{ width: "90%" }}
+          sx={{width: '90%'}}
         />
-
         <TextField
           label="Url"
           variant="standard"
@@ -99,7 +105,7 @@ function EditElementForm(props) {
           onChange={handleChange}
           name="url"
           value={formData.url}
-          sx={{ width: "90%" }}
+          sx={{width: '90%'}}
         />
 
         <TextField
@@ -110,7 +116,7 @@ function EditElementForm(props) {
           name="area"
           placeholder="Ej: Vallecas"
           value={formData.area}
-          sx={{ width: "90%" }}
+          sx={{width: '90%'}}
         />
 
         <TextField
@@ -121,12 +127,12 @@ function EditElementForm(props) {
           name="date"
           placeholder="Ej: 2019"
           value={formData.date}
-          sx={{ width: "90%", marginBottom: "10px" }}
+          sx={{width: '90%', marginBottom: '10px'}}
         />
 
         <InputLabel id="tipo-label">Tipo</InputLabel>
         <Select
-          sx={{ width: "100%" }}
+          sx={{width: '100%'}}
           labelId="tipo-label"
           id="demo-simple-select"
           name="type"
@@ -149,7 +155,7 @@ function EditElementForm(props) {
           rows={3}
           value={formData.description}
           onChange={handleChange}
-          sx={{ width: "100%", marginTop: "5px" }}
+          sx={{width: '100%', marginTop: '5px'}}
         />
 
         <FormControlLabel
@@ -174,7 +180,7 @@ function EditElementForm(props) {
             onChange={handleChange}
             name="lat"
             ref={coordinateLatRef}
-            value={formData.lat}
+            value={props.coordinates.lat}
           />
 
           <TextField
@@ -186,7 +192,7 @@ function EditElementForm(props) {
             onChange={handleChange}
             name="lng"
             ref={coordinateLngRef}
-            value={formData.lng}
+            value={props.coordinates.lng}
           />
         </Box>
 
@@ -197,47 +203,27 @@ function EditElementForm(props) {
           onChange={handleChange}
           name="lng"
           disabled
-          value={props.adminName}
+          value={props.admin}
         />
 
-        <button className="save" name="edit">
-          {" "}
-          Editar elemento{" "}
-        </button>
+        <Button type="submit"> Publicar elemento </Button>
       </form>
-      <button
-        className="delete"
-        name="delete"
-        onClick={(e) => {
-          e.preventDefault();
-          deleteElement();
-        }}
-      >
-        {" "}
-        Eliminar elemento{" "}
-      </button>
 
-      {console.log(response.code)}
-      {response.code === "loading" && (
-        <p className="loading">
-          {" "}
-          <span class="loader"></span>{" "}
-        </p>
-      )}
+      {response.code === "loading" && <LinearProgress />}
       {response.code === "200" && (
-        <p className="success">
-          {" "}
-          {response.code}: {response.status}
-        </p>
+        <Alert severity="success">
+          <AlertTitle>Bien!</AlertTitle>
+          <strong>{response.response}</strong>
+        </Alert>
       )}
       {response.code === "0" && (
-        <p className="error">
-          {" "}
-          {response.code}: {response.status}
-        </p>
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          <strong>{response.response}</strong>
+        </Alert>
       )}
     </>
   );
 }
 
-export default EditElementForm;
+export default AddElementForm;

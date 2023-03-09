@@ -1,9 +1,9 @@
 import React from 'react';
-import MapAdminController from './Components/Admin/MapAdminController'
+import MapAdminController from './Components/Admin/Map/MapAdminController'
 import { useLoadScript } from "@react-google-maps/api";
 import { nanoid } from 'nanoid'
-import AddElementForm from './Components/Admin/AddElementForm'
-import EditElementForm from './Components/Admin/EditElementForm'
+import AddElementForm from './Components/Admin/EditAddElement/AddElementForm'
+import EditElementForm from './Components/Admin/EditAddElement/EditElementForm'
 import callApi from "./utils/fetchUtil.js";
 import './Styles/Styles.css';
 import Loading from './Components/Loading/Loading';
