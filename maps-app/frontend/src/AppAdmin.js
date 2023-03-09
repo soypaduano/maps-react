@@ -1,13 +1,14 @@
 import React from 'react';
+import ErrorBoundary from "./Components/ErrorBoundary";
 import MapAdminController from './Components/Admin/Map/MapAdminController'
 import { useLoadScript } from "@react-google-maps/api";
 import { nanoid } from 'nanoid'
-import AddElementForm from './Components/Admin/EditAddElement/AddElementForm'
-import EditElementForm from './Components/Admin/EditAddElement/EditElementForm'
+import AddElementForm from './Components/Admin/FormElement/AddElementForm'
+import EditElementForm from './Components/Admin/FormElement/EditElementForm'
 import callApi from "./utils/fetchUtil.js";
 import './Styles/Styles.css';
 import Loading from './Components/Loading/Loading';
-import AlertConnection from './Components/AlertConnection/AlertConnection';
+import AlertConnection from './Components/Alerts/AlertConnection';
 
 
 function AppAdmin() {
@@ -59,6 +60,7 @@ function AppAdmin() {
   return (
         <div className="App">
           <main>
+            <ErrorBoundary>
             <div className="content-container">
               <div className="map-container">
               <AlertConnection show={!markersLoaded}/>
@@ -71,6 +73,7 @@ function AppAdmin() {
                 {editMarker.id !== undefined && <EditElementForm key={nanoid()}  editMarker={editMarker} handleEditMarker={handleEditMarker}/>}
               </div>
             </div>
+            </ErrorBoundary>
           </main>
         </div>
     );

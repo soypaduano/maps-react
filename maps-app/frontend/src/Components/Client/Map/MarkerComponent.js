@@ -10,7 +10,6 @@ function MarkerComponent(props) {
     let shouldIShow = true;
 
     let markerClicked = (id) => {
-        debugger;
         props.handleClickSetMarker(id)
     }
 

@@ -269,14 +269,6 @@ p.loading .loader {
   border: 0px;
   font-family: 'Albert Sans', sans-serif;
 }
-.content-container .add-element-container Button {
-  border: 1px solid black;
-  color: black;
-}
-.content-container .add-element-container Button:hover {
-  background-color: #847996;
-  color: white;
-}
 .filters-container {
   margin: 10px;
   font-size: 1.2rem;

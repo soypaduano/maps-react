@@ -8,7 +8,7 @@ import ErrorBoundary from "./Components/ErrorBoundary";
 import Header from "./Components/Client/Header/Header";
 import callApi from "./utils/fetchUtil.js";
 import localData from "./Data/localData";
-import AlertConnection from "./Components/AlertConnection/AlertConnection";
+import AlertConnection from "./Components/Alerts/AlertConnection";
 import Loading from './Components/Loading/Loading';
 
 function App() {
