@@ -16,7 +16,7 @@ import {
   Typography
 } from "@mui/material";
 
-const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"];
+const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo", "Productores"];
 
 function AddElementForm(props) {
   const [formData, setFormData] = React.useState({

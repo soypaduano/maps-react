@@ -13,7 +13,7 @@ import {
   Box,
 } from "@mui/material";
 import { fetchCall } from "./fetchAPI.js";
-const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo"];
+const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo", "Productores"];
 
 function EditElementForm(props) {
   const {

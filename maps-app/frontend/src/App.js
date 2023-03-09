@@ -30,6 +30,7 @@ function App() {
     Grupos: true,
     DJ: true,
     Colectivos: true,
+    Productores: true
   });
 
   let handleClickSetMarker = (id) => {
@@ -43,6 +44,7 @@ function App() {
   };
 
   let handleClickSetFiltersApplied = (key, value) => {
+    console.log(key, value)
     setFiltersApplied((oldFiltersApplied) => {
       return { ...oldFiltersApplied, [key]: value };
     });

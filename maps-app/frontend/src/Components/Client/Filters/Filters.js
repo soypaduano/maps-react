@@ -1,29 +1,40 @@
 import React from "react";
+import {FormGroup, FormControlLabel, Checkbox} from '@mui/material';
+import { red } from '@mui/material/colors';
 
 function Filters(props) {
 
     let filtersApplied = props.filtersApplied;
 
-    const Checkbox = ({ label, value}) => {
+    console.log(filtersApplied);
 
+    const CheckboxFilter = ({ label, value}) => {
+        console.log('***');
+        console.log(label, value);
         let handleClickCheckboxChanged = (e) => {
             props.handleClickSetFiltersApplied(label, e.target.checked);
         }
 
         return (
-            <label>
-                <input type="checkbox" checked={value} onChange={(e) => handleClickCheckboxChanged(e)} />
-                {label}
-            </label>
+            <Checkbox label="Rap" checked={value} onChange={(e) => handleClickCheckboxChanged(e)} sx={{
+                color: red[800],
+                '&.Mui-checked': {
+                  color: red[600],
+                },
+              }}
+      />
         );
     };
 
     return (
         <div className="filters-container">
-             <Checkbox label="Rap" value={filtersApplied["Rap"]} />
-             <Checkbox label="Grupos" value={filtersApplied["Grupos"]}/>
-             <Checkbox label="DJ" value={filtersApplied["DJ"]}/>
-             <Checkbox label="Colectivos" value={filtersApplied["Colectivos"]}/>
+            <FormGroup row={true}>
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Rap"]} label={'Rap'} />} label="Rap" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Grupos"]} label="Grupos" />} label="Grupos" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["DJ"]} label="DJ" />} label="DJ" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Colectivos"]} label="Colectivos" />} label="Colectivos" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Productores"]} label="Productores" />} label="Productores" />
+            </FormGroup>             
         </div>
     )    
 }
