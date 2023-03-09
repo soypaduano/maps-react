@@ -1,19 +1,16 @@
 import React from "react";
 import {
   Button,
-  Alert,
-  AlertTitle,
   TextField,
   Select,
   MenuItem,
   InputLabel,
   FormControlLabel,
   Checkbox,
-  LinearProgress,
   Box,
 } from "@mui/material";
 import { fetchCall } from "./fetchAPI.js";
-const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo", "Productores"];
+import {typeOptions} from "../../utils/types.js";
 
 function EditElementForm(props) {
   const {
@@ -42,8 +39,6 @@ function EditElementForm(props) {
     lng: lng,
     adminName: adminName,
   });
-
-  console.log(props);
 
   const [response, setResponse] = React.useState({});
   const coordinateLatRef = React.useRef(null)

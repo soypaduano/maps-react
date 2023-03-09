@@ -1,11 +1,10 @@
 import React from 'react';
-//import shallowCompare from 'react-addons-shallow-compare'; // ES6
 import { Marker} from "@react-google-maps/api";
+import {COLORS_TYPE_PIN} from './../../../utils/types'
 
 
 function MarkerComponent(props) {
 
-    //const coord = { lat: 40.41988, lng: -3.688780372508718 }
     let {id, name, lat, lng, type} = props.element;
     let isSelected = props.selectedMarker.id ? props.selectedMarker.isSelected : false;
     let shouldIShow = true;
@@ -15,7 +14,7 @@ function MarkerComponent(props) {
         props.handleClickSetMarker(id)
     }
 
-    if(id != props.selectedMarker.id) isSelected = false;
+    if(id !== props.selectedMarker.id) isSelected = false;
 
     if(Object.keys(props.filters).length !== 0){
         for (let [key, value] of Object.entries(props.filters)) {
@@ -28,8 +27,10 @@ function MarkerComponent(props) {
         return (
             <Marker key={id} onClick={() => {
                 markerClicked(id)
-            }} 
+            }}
+
             position={{ lat: parseFloat(lat), lng: parseFloat(lng) }}
+            icon={{url: COLORS_TYPE_PIN[type]}}
             label={{
                 text: `${name}`,
                 fontFamily: 'Albert Sans, sans-serif',
@@ -47,8 +48,6 @@ function MarkerComponent(props) {
 }
 
 export default React.memo(MarkerComponent, areEqual);
-
-
 function areEqual(oldProps, nextProps){
 
     /*
@@ -56,7 +55,7 @@ function areEqual(oldProps, nextProps){
 
     */
 
-    if(oldProps.filters != nextProps.filters){
+    if(oldProps.filters !== nextProps.filters){
         console.log("Filters are not the same, so we're re-rendering");
         return false;
     }

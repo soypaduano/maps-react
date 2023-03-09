@@ -16,7 +16,7 @@ import {
   Typography
 } from "@mui/material";
 
-const typeOptions = ["Rap", "Grupos", "Dj", "Colectivo", "Productores"];
+import {typeOptions} from "../../utils/types.js";
 
 function AddElementForm(props) {
   const [formData, setFormData] = React.useState({
@@ -42,7 +42,6 @@ function AddElementForm(props) {
         [name]: type === "checkbox" ? checked : value,
       };
     });
-    console.log(formData)
   }
 
   let handleSubmit = (e) => {
@@ -210,14 +209,10 @@ function AddElementForm(props) {
         <Button type="submit"> Publicar elemento </Button>
       </form>
 
-
-          {console.log(response)}
-
       {response.code === "loading" && <LinearProgress />}
       {response.code === "200" && (
         <Alert severity="success">
           <AlertTitle>Bien!</AlertTitle>
-          {console.log(response)}
           <strong>{response.response}</strong>
         </Alert>
       )}

@@ -6,11 +6,7 @@ function Filters(props) {
 
     let filtersApplied = props.filtersApplied;
 
-    console.log(filtersApplied);
-
     const CheckboxFilter = ({ label, value}) => {
-        console.log('***');
-        console.log(label, value);
         let handleClickCheckboxChanged = (e) => {
             props.handleClickSetFiltersApplied(label, e.target.checked);
         }

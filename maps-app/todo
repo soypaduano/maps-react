@@ -8,3 +8,5 @@
 - Mirar bien lo de que el artista no tiene descripcion
 - Cambiar el password en el server.js (moverlo a .env)
 - Cambiar color a pin segun el tipo de artista (grupo, rap)
+- Mirar bien que pasa en la actualizacion (memo) de los markers components
+- Falta un setResponse en editComponent (por si la peticion ha ido bien)

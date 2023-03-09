@@ -41,7 +41,6 @@ function AppAdmin() {
       setMarkersLoaded(true);
     })
     .catch(err => {
-      console.log(err)
       setMarkersLoaded(false);
     });
 

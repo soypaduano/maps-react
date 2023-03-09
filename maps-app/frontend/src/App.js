@@ -44,7 +44,6 @@ function App() {
   };
 
   let handleClickSetFiltersApplied = (key, value) => {
-    console.log(key, value)
     setFiltersApplied((oldFiltersApplied) => {
       return { ...oldFiltersApplied, [key]: value };
     });

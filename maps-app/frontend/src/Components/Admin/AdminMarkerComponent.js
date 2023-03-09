@@ -17,7 +17,6 @@ function AdminMarkerComponent(props) {
                 fontSize: '0.7rem',
                 className: `marker-label admin-mode` 
             }}>
-                {console.log("Rendering myself")}
         </Marker>
         )   
     }
