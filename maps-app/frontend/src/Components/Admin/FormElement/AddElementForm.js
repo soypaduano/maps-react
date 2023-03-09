@@ -49,6 +49,7 @@ function AddElementForm(props) {
     fetchPost(url)
       .then((response) => {
         setResponse(response);
+        setTimeout(() => window.location.reload(), 3000)
       })
       .catch((err) => {
         err.code ? setResponse(err) : setResponse({code: '0', response: 'El backend esta caido'})

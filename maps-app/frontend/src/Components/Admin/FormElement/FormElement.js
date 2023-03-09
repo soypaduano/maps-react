@@ -17,13 +17,6 @@ const FormElement = (props) => {
     const coordinateLatRef = React.useRef(null);
     const coordinateLngRef = React.useRef(null);
 
-    console.log(formData)
-    console.log(formData)
-    console.log(formData)
-    console.log(formData)
-    console.log(formData)
-    console.log(formData)
-
   return (
     <>
     <form onSubmit={(e) => handleSubmit(e)}>
