@@ -8,7 +8,7 @@ const cors = require('cors');
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect('mongodb+srv://padu:hijosdeputa1.@cluster0.phvpmkp.mongodb.net/mapElements?retryWrites=true&w=majority', () => {
+mongoose.connect(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.phvpmkp.mongodb.net/mapElements?retryWrites=true&w=majority`, () => {
     console.log("Database connected")
 }) 
 

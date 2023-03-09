@@ -1,12 +1,8 @@
 - Cambiar lo de lat-lon en la base de datos
-- Cambiar el color del maker selected a naranja
-- Mirarte bien como handlear errores en React
+- Mirarte bien como handlear errores en React: Anadir el error boundary en el admin
 - Meter hook de useMemo (podríamos usarlo para los datos de artistas?)
-- Probar nuevos estilos
 - Anadir a otro componente todo el formulario (estas usando el mismo)
-- Anadir el error boundary en el admin
 - Mirar bien lo de que el artista no tiene descripcion
-- Cambiar el password en el server.js (moverlo a .env)
 - Cambiar color a pin segun el tipo de artista (grupo, rap)
 - Mirar bien que pasa en la actualizacion (memo) de los markers components
 - Falta un setResponse en editComponent (por si la peticion ha ido bien)
