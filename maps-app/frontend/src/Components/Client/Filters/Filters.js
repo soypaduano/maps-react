@@ -1,6 +1,6 @@
 import React from "react";
 import {FormGroup, FormControlLabel, Checkbox} from '@mui/material';
-import { red } from '@mui/material/colors';
+import {COLORS_TYPE_FILTERS} from '../../../utils/types'
 
 function Filters(props) {
 
@@ -11,11 +11,14 @@ function Filters(props) {
             props.handleClickSetFiltersApplied(label, e.target.checked);
         }
 
+
+        let color = COLORS_TYPE_FILTERS[label];
+
         return (
-            <Checkbox label="Rap" checked={value} onChange={(e) => handleClickCheckboxChanged(e)} sx={{
-                color: red[800],
+            <Checkbox label={label} checked={value} onChange={(e) => handleClickCheckboxChanged(e)} sx={{
+                color: color,
                 '&.Mui-checked': {
-                  color: red[600],
+                  color: color,
                 },
               }}
       />
@@ -26,10 +29,10 @@ function Filters(props) {
         <div className="filters-container">
             <FormGroup row={true}>
              <FormControlLabel control={<CheckboxFilter value={filtersApplied["Rap"]} label={'Rap'} />} label="Rap" />
-             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Grupos"]} label="Grupos" />} label="Grupos" />
-             <FormControlLabel control={<CheckboxFilter value={filtersApplied["DJ"]} label="DJ" />} label="DJ" />
-             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Colectivos"]} label="Colectivos" />} label="Colectivos" />
-             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Productores"]} label="Productores" />} label="Productores" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Grupos"]} label={"Grupos"} />} label="Grupos" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["DJ"]} label={"Dj"} />} label="DJ" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Colectivos"]} label={"Colectivos"} />} label="Colectivos" />
+             <FormControlLabel control={<CheckboxFilter value={filtersApplied["Productores"]} label={"Productor"} />} label="Productor" />
             </FormGroup>             
         </div>
     )    
